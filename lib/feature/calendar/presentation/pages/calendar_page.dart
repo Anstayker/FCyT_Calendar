@@ -7,11 +7,42 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: calendarAppBar(),
-      body: buildBody(),
-      drawer: calendarDrawer(),
-      floatingActionButton: mobileMainFab(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // TODO: Revisar el maxWidth
+        if (constraints.maxWidth > 800) {
+          // ! Web Version
+          return Scaffold(
+            appBar: calendarAppBar(),
+            body: Row(
+              children: [
+                SizedBox(width: 250, child: calendarDrawer()),
+                Expanded(child: buildBody()),
+                SizedBox(
+                  width: 50,
+                  child: Column(
+                    children: [
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+                      IconButton(
+                          onPressed: () {}, icon: const Icon(Icons.edit)),
+                      IconButton(
+                          onPressed: () {}, icon: const Icon(Icons.delete)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        } else {
+          // ! Mobile Version
+          return Scaffold(
+            appBar: calendarAppBar(),
+            body: buildBody(),
+            drawer: calendarDrawer(),
+            floatingActionButton: mobileMainFab(),
+          );
+        }
+      },
     );
   }
 
