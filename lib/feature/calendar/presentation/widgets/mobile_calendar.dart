@@ -7,7 +7,7 @@ class MobileCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
 
     final List<String> hours = [
       '6:45',
@@ -25,6 +25,7 @@ class MobileCalendar extends StatelessWidget {
 
     final List<String> days = ['L', 'M', 'M', 'J', 'V', 'S'];
 
+    // ignore: unused_local_variable
     final List<ClassSchedule> classScheduleList = [];
 
     return Column(
@@ -32,51 +33,62 @@ class MobileCalendar extends StatelessWidget {
         daysRow(days),
         Expanded(
           child: SingleChildScrollView(
-            controller: _scrollController,
+            controller: scrollController,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   children: [
-                    ...hours.map((hour) => Container(
-                          height: 45,
-                          width: 60,
-                          alignment: Alignment.center,
-                          child: Text(hour),
-                        )),
+                    ...hours.map((hour) => hoursDisplay(hour)),
                   ],
                 ),
-                Expanded(
-                    child: SingleChildScrollView(
-                  controller: _scrollController,
-                  scrollDirection: Axis.horizontal,
-                  child: Column(
-                    children: [
-                      for (int i = 0; i < hours.length; i++)
-                        Row(
-                          children: List.generate(days.length, (index) {
-                            final day = days[index];
-                            final hour = hours[i];
-                            // TODO: add class schedule
-
-                            return Container(
-                              height: 45,
-                              width: MediaQuery.of(context).size.width / 6 - 10,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                              ),
-                            );
-                          }),
-                        )
-                    ],
-                  ),
-                ))
+                classScheduleTable(scrollController, hours, days, context)
               ],
             ),
           ),
         ),
       ],
     );
+  }
+
+  Container hoursDisplay(String hour) {
+    return Container(
+      height: 45,
+      width: 60,
+      alignment: Alignment.center,
+      child: Text(hour),
+    );
+  }
+
+  Expanded classScheduleTable(ScrollController scrollController,
+      List<String> hours, List<String> days, BuildContext context) {
+    return Expanded(
+        child: SingleChildScrollView(
+      controller: scrollController,
+      scrollDirection: Axis.horizontal,
+      child: Column(
+        children: [
+          for (int i = 0; i < hours.length; i++)
+            Row(
+              children: List.generate(days.length, (index) {
+                // ignore: unused_local_variable
+                final day = days[index];
+                // ignore: unused_local_variable
+                final hour = hours[i];
+                // TODO: add class schedule
+
+                return Container(
+                  height: 45,
+                  width: MediaQuery.of(context).size.width / 6 - 10,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey[350]!),
+                  ),
+                );
+              }),
+            )
+        ],
+      ),
+    ));
   }
 
   Row daysRow(List<String> days) {
