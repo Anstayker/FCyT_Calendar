@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 
 import 'calendar_semester.dart';
 
-class CalendarCarreer extends Equatable {
+class CalendarCareer extends Equatable {
   final String name;
   final List<CalendarSemester> semesters;
 
-  const CalendarCarreer({
+  const CalendarCareer({
     required this.name,
     required this.semesters,
   });

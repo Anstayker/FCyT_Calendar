@@ -2,10 +2,10 @@ import 'package:cappuchino_prototype/feature/calendar/domain/entities/calendar_s
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/calendar_carreer.dart';
+import '../entities/calendar_career.dart';
 
 abstract class CalendarRepository {
-  Future<Either<Failure, List<CalendarCarreer>>> getAllCalendarInfo();
+  Future<Either<Failure, List<CalendarCareer>>> getAllCalendarInfo();
   Future<Either<Failure, bool>> setSubjectInCalendar(String calendarSubjectId);
   Future<Either<Failure, bool>> removeSubjectInCalendar(
       String calendarSubjectId);

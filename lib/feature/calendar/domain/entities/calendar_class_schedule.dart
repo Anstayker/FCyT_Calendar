@@ -1,18 +1,20 @@
 import 'package:equatable/equatable.dart';
 
-class ClassSchedule extends Equatable {
+class CalendarClassSchedule extends Equatable {
   final String day;
   final String startTime;
   final String endTime;
   final String extraDetails;
+  final String classroom;
 
-  const ClassSchedule({
+  const CalendarClassSchedule({
     required this.day,
     required this.startTime,
     required this.endTime,
     required this.extraDetails,
+    required this.classroom,
   });
 
   @override
-  List<Object?> get props => [day, startTime, endTime, extraDetails];
+  List<Object?> get props => [day, startTime, endTime, extraDetails, classroom];
 }
