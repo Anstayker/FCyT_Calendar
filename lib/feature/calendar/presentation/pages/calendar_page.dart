@@ -50,9 +50,6 @@ class CalendarPage extends StatelessWidget {
     return const MobileCalendar();
   }
 
-  FloatingActionButton mobileMainFab() =>
-      FloatingActionButton(onPressed: () {});
-
   Drawer calendarDrawer() {
     return Drawer(
       child: ListView(
@@ -74,6 +71,10 @@ class CalendarPage extends StatelessWidget {
     );
   }
 
+  FloatingActionButton mobileMainFab() {
+    return FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add));
+  }
+
   ListTile careerListTile(String careerName) {
     return ListTile(
       title: Text(careerName),
@@ -90,6 +91,10 @@ class CalendarPage extends StatelessWidget {
           Text('Cappuchino UMSS'),
         ],
       ),
+      actions: [
+        IconButton(onPressed: () {}, icon: const Icon(Icons.calendar_month)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+      ],
     );
   }
 }

@@ -7,8 +7,13 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  # Provider for state management
   provider: ^6.1.2
   go_router: ^14.6.2
+  # Functional programming
+  dartz: ^0.10.1
+  # Equatable for value equality
+  equatable: ^2.0.7
 
   flutter:
     sdk: flutter
