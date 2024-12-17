@@ -19,7 +19,8 @@ class SubjectGroupListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: ListTile(
-        title: Text(subjectGroup.name),
+        title: Text(subjectGroup.teacher),
+        subtitle: Text(subjectGroup.name),
         trailing: Checkbox(
           value: isSelected,
           onChanged: (bool? value) {

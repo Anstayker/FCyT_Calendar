@@ -42,6 +42,7 @@ class CalendarDrawer extends StatefulWidget {
 class _CalendarDrawerState extends State<CalendarDrawer> {
   Set<CalendarSemester> expandedSemesters = {};
   Set<CalendarSubject> expandedSubjects = {};
+  String searchQuery = '';
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
       child: ListView(
         children: [
           drawerCareerTitle(),
+          if (widget.selectedCareer != null) searchField(),
           if (widget.selectedCareer == null)
             ...widget.careersList.map((career) => CareerListTile(
                   career: career,
@@ -56,6 +58,20 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
                 ))
           else
             ...widget.selectedCareer!.semesters.expand((semester) {
+              bool shouldExpandSemester = searchQuery.isNotEmpty &&
+                  semester.subjects.any((subject) {
+                    return subject.name
+                            .toLowerCase()
+                            .contains(searchQuery.toLowerCase()) ||
+                        subject.groups.any((group) => group.teacher
+                            .toLowerCase()
+                            .contains(searchQuery.toLowerCase()));
+                  });
+
+              if (shouldExpandSemester) {
+                expandedSemesters.add(semester);
+              }
+
               return [
                 SemesterListTile(
                   semester: semester,
@@ -72,20 +88,33 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
                 ),
                 if (expandedSemesters.contains(semester))
                   ...semester.subjects.expand((subject) {
+                    bool shouldExpandSubject = searchQuery.isNotEmpty &&
+                        (subject.name
+                                .toLowerCase()
+                                .contains(searchQuery.toLowerCase()) ||
+                            subject.groups.any((group) => group.teacher
+                                .toLowerCase()
+                                .contains(searchQuery.toLowerCase())));
+
+                    if (shouldExpandSubject) {
+                      expandedSubjects.add(subject);
+                    }
+
                     return [
-                      SubjectListTile(
-                        subject: subject,
-                        onTap: () {
-                          setState(() {
-                            if (expandedSubjects.contains(subject)) {
-                              expandedSubjects.remove(subject);
-                            } else {
-                              expandedSubjects.add(subject);
-                            }
-                            widget.onSubjectSelected(subject);
-                          });
-                        },
-                      ),
+                      if (searchQuery.isEmpty || shouldExpandSubject)
+                        SubjectListTile(
+                          subject: subject,
+                          onTap: () {
+                            setState(() {
+                              if (expandedSubjects.contains(subject)) {
+                                expandedSubjects.remove(subject);
+                              } else {
+                                expandedSubjects.add(subject);
+                              }
+                              widget.onSubjectSelected(subject);
+                            });
+                          },
+                        ),
                       if (expandedSubjects.contains(subject))
                         ...subject.groups
                             .map((subjectGroup) => SubjectGroupListTile(
@@ -141,6 +170,26 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
           ),
           Text(title, style: const TextStyle(fontSize: 20)),
         ],
+      ),
+    );
+  }
+
+  Widget searchField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      child: TextField(
+        decoration: const InputDecoration(
+          labelText: 'Buscar materias o docentes',
+          border: OutlineInputBorder(),
+          prefixIcon: Icon(Icons.search),
+        ),
+        onChanged: (value) {
+          setState(() {
+            searchQuery = value;
+            expandedSemesters.clear();
+            expandedSubjects.clear();
+          });
+        },
       ),
     );
   }
