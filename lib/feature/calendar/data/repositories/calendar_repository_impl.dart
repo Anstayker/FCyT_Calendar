@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/calendar_career.dart';
 import '../../domain/entities/calendar_subject.dart';
+import '../../domain/entities/calendar_subject_group.dart';
 import '../../domain/repositories/calendar_repository.dart';
 import '../datasources/calendar_local_datasource.dart';
 
@@ -23,8 +24,8 @@ class CalendarRepositoryImpl implements CalendarRepository {
   }
 
   @override
-  Future<Either<Failure, List<CalendarSubject>>> setSubjectInCalendar(
-      CalendarSubject calendarSubjectId) async {
+  Future<Either<Failure, List<CalendarSubjectGroup>>> setSubjectInCalendar(
+      CalendarSubjectGroup calendarSubjectId) async {
     try {
       final result =
           await calendarLocalDatasource.setSubjectInCalendar(calendarSubjectId);

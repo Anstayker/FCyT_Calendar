@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/calendar_subject.dart';
+import '../../domain/entities/calendar_subject_group.dart';
 
 class MobileCalendar extends StatefulWidget {
   const MobileCalendar({
@@ -11,7 +11,7 @@ class MobileCalendar extends StatefulWidget {
   @override
   State<MobileCalendar> createState() => _MobileCalendarState();
 
-  final List<CalendarSubject> subjectsData;
+  final List<CalendarSubjectGroup> subjectsData;
 }
 
 class _MobileCalendarState extends State<MobileCalendar> {
@@ -74,16 +74,17 @@ class _MobileCalendarState extends State<MobileCalendar> {
         return Row(
           children: days.asMap().entries.map((dayEntry) {
             String day = dayEntry.value;
-            final selectedClass = widget.subjectsData.firstWhere(
-              (element) => element.groups[0].hours.any(
+            final selectedGroup = widget.subjectsData.firstWhere(
+              (element) => element.hours.any(
                 (schedule) {
                   return schedule.day == day && schedule.startTime == hour;
                 },
               ),
-              orElse: () => const CalendarSubject(
+              orElse: () => const CalendarSubjectGroup(
                 id: '',
                 name: '',
-                groups: [],
+                teacher: '',
+                hours: [],
               ),
             );
 
@@ -91,13 +92,13 @@ class _MobileCalendarState extends State<MobileCalendar> {
               height: 45,
               width: MediaQuery.of(context).size.width / 6 - 10,
               decoration: BoxDecoration(
-                color: selectedClass.name.isNotEmpty
+                color: selectedGroup.name.isNotEmpty
                     ? Colors.blue.withOpacity(0.5)
                     : null,
                 border: Border.all(color: Colors.grey[350]!),
               ),
-              child: selectedClass.name.isNotEmpty
-                  ? Center(child: Text(selectedClass.name))
+              child: selectedGroup.name.isNotEmpty
+                  ? Center(child: Text(selectedGroup.name))
                   : null,
             );
           }).toList(),

@@ -22,7 +22,7 @@ class _CalendarPageState extends State<CalendarPage> {
   CalendarSemester? selectedSemester;
   CalendarSubject? selectedSubject;
   CalendarSubjectGroup? selectedSubjectGroup;
-  List<CalendarSubject> subjectsData = [];
+  List<CalendarSubjectGroup> subjectsData = [];
   List<CalendarCareer> careersInfo = [];
 
   @override
@@ -36,7 +36,6 @@ class _CalendarPageState extends State<CalendarPage> {
                   .add(CalendarGetAllCalendarInfoEvent());
             }
             if (state is CalendarGetAllCalendarInfoLoaded) {
-              print(state.calendarCareerList);
               careersInfo = state.calendarCareerList;
               return layoutBuilder(context, careersInfo, subjectsData);
             }
@@ -53,7 +52,7 @@ class _CalendarPageState extends State<CalendarPage> {
   LayoutBuilder layoutBuilder(
       BuildContext context,
       List<CalendarCareer> careersList,
-      List<CalendarSubject> selectedSubjects) {
+      List<CalendarSubjectGroup> selectedSubjects) {
     return LayoutBuilder(
       builder: (context, constraints) {
         // TODO: Revisar el maxWidth
@@ -105,26 +104,34 @@ class _CalendarPageState extends State<CalendarPage> {
           selectedCareer = career;
           selectedSemester = null;
           selectedSubject = null;
+          selectedSubjectGroup = null;
         });
       },
       onSemesterSelected: (semester) {
         setState(() {
-          // No sé por qué esto provoca que se deba apretar 2 veces
-          // El botón de back para retroceder a la lista de carreras
-          // selectedSemester = semester;
+          selectedSemester = semester;
           selectedSubject = null;
+          selectedSubjectGroup = null;
         });
       },
       onSubjectSelected: (subject) {
-        BlocProvider.of<CalendarBloc>(context)
-            .add(CalendarSetSubjectInCalendar(calendarSubject: subject));
         setState(() {
-          selectedSubject = subject;
+          // selectedSubject = subject;
+          selectedSubjectGroup = null;
+        });
+      },
+      onSubjectGroupSelected: (subjectGroup) {
+        setState(() {
+          // selectedSubjectGroup = subjectGroup;
+          BlocProvider.of<CalendarBloc>(context)
+              .add(CalendarSetSubjectInCalendar(calendarSubject: subjectGroup));
         });
       },
       onBack: () {
         setState(() {
-          if (selectedSubject != null) {
+          if (selectedSubjectGroup != null) {
+            selectedSubjectGroup = null;
+          } else if (selectedSubject != null) {
             selectedSubject = null;
           } else if (selectedSemester != null) {
             selectedSemester = null;
@@ -135,10 +142,12 @@ class _CalendarPageState extends State<CalendarPage> {
       },
       selectedCareer: selectedCareer,
       selectedSemester: selectedSemester,
+      selectedSubject: selectedSubject,
+      selectedSubjectGroup: selectedSubjectGroup,
     );
   }
 
-  Widget buildBody(List<CalendarSubject> subjectsData) {
+  Widget buildBody(List<CalendarSubjectGroup> subjectsData) {
     return MobileCalendar(subjectsData: subjectsData);
   }
 

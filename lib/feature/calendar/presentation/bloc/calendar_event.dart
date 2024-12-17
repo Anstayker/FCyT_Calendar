@@ -10,7 +10,7 @@ sealed class CalendarEvent extends Equatable {
 class CalendarGetAllCalendarInfoEvent extends CalendarEvent {}
 
 class CalendarSetSubjectInCalendar extends CalendarEvent {
-  final CalendarSubject calendarSubject;
+  final CalendarSubjectGroup calendarSubject;
 
   const CalendarSetSubjectInCalendar({required this.calendarSubject});
 

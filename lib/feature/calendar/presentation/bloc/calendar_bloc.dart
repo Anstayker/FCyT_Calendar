@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../domain/entities/calendar_career.dart';
-import '../../domain/entities/calendar_subject.dart';
+import '../../domain/entities/calendar_subject_group.dart';
 import '../../domain/usecases/get_all_calendar_info.dart' as get_all_info;
 import '../../domain/usecases/set_subject_in_calendar.dart'
     as set_subject_in_calendar;
@@ -37,8 +37,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
               calendarSubjectId: event.calendarSubject));
       result.fold(
         (failure) => emit(const CalendarError('Error while loading data')),
-        (calendarSubject) => emit(CalendarSetSubjectInCalendarSuccess(
-            calendarSubject: calendarSubject)),
+        (calendarSubjectGroup) => emit(CalendarSetSubjectInCalendarSuccess(
+            calendarSubject: calendarSubjectGroup)),
       );
     });
   }
