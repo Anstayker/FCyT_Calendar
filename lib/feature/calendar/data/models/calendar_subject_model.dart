@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import '../../domain/entities/calendar_subject.dart';
 
-import 'calendar_class_schedule_model.dart';
+import 'calendar_subject_group_model.dart';
 
 List<CalendarSubjectModel> calendarSubjectModelFromJson(String str) =>
     List<CalendarSubjectModel>.from(
@@ -15,17 +15,15 @@ class CalendarSubjectModel extends CalendarSubject {
   const CalendarSubjectModel({
     required super.id,
     required super.name,
-    required super.teacher,
-    required super.hours,
+    required super.groups,
   });
 
   factory CalendarSubjectModel.fromJson(Map<String, dynamic> json) {
     return CalendarSubjectModel(
       id: json['id'],
       name: json['name'],
-      teacher: json['teacher'],
-      hours: List<CalendarClassScheduleModel>.from(json['class_hours']
-          .map((x) => CalendarClassScheduleModel.fromJson(x))),
+      groups: List<CalendarSubjectGroupModel>.from(
+          json['groups'].map((x) => CalendarSubjectGroupModel.fromJson(x))),
     );
   }
 
@@ -33,9 +31,8 @@ class CalendarSubjectModel extends CalendarSubject {
     return {
       'id': id,
       'name': name,
-      'teacher': teacher,
-      'class_hours':
-          hours.map((e) => (e as CalendarClassScheduleModel).toJson()).toList(),
+      'groups':
+          groups.map((e) => (e as CalendarSubjectGroupModel).toJson()).toList(),
     };
   }
 }

@@ -9,42 +9,96 @@
             {
               "id": "1",
               "name": "Matemáticas I",
-              "teacher": "Dr. Juan Pérez",
-              "class_hours": [
+              "groups": [
                 {
-                  "day": "L",
-                  "start_time": "8:15",
-                  "end_time": "9:45",
-                  "extra_details": "Aula 101",
-                  "classroom": "101"
+                  "id": "1A",
+                  "name": "Grupo A",
+                  "teacher": "Dr. Juan Pérez",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "8:15",
+                      "end_time": "9:45",
+                      "extra_details": "Aula 101",
+                      "classroom": "101"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "8:15",
+                      "end_time": "9:45",
+                      "extra_details": "Aula 101",
+                      "classroom": "101"
+                    }
+                  ]
                 },
                 {
-                  "day": "M",
-                  "start_time": "8:15",
-                  "end_time": "9:45",
-                  "extra_details": "Aula 101",
-                  "classroom": "101"
+                  "id": "1B",
+                  "name": "Grupo B",
+                  "teacher": "Dr. Juan Pérez",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 102",
+                      "classroom": "102"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 102",
+                      "classroom": "102"
+                    }
+                  ]
                 }
               ]
             },
             {
               "id": "2",
               "name": "Programación I",
-              "teacher": "Ing. María López",
-              "class_hours": [
+              "groups": [
                 {
-                  "day": "L",
-                  "start_time": "11:15",
-                  "end_time": "12:45",
-                  "extra_details": "Aula 102",
-                  "classroom": "102"
+                  "id": "2A",
+                  "name": "Grupo A",
+                  "teacher": "Ing. María López",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 103",
+                      "classroom": "103"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 103",
+                      "classroom": "103"
+                    }
+                  ]
                 },
                 {
-                  "day": "J",
-                  "start_time": "11:15",
-                  "end_time": "12:45",
-                  "extra_details": "Aula 102",
-                  "classroom": "102"
+                  "id": "2B",
+                  "name": "Grupo B",
+                  "teacher": "Ing. María López",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "12:00",
+                      "end_time": "13:30",
+                      "extra_details": "Aula 104",
+                      "classroom": "104"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "12:00",
+                      "end_time": "13:30",
+                      "extra_details": "Aula 104",
+                      "classroom": "104"
+                    }
+                  ]
                 }
               ]
             }
@@ -56,42 +110,96 @@
             {
               "id": "3",
               "name": "Estructuras de Datos",
-              "teacher": "Dr. Ana García",
-              "class_hours": [
+              "groups": [
                 {
-                  "day": "Lunes",
-                  "start_time": "09:00",
-                  "end_time": "10:30",
-                  "extra_details": "Aula 201",
-                  "classroom": "201"
+                  "id": "3A",
+                  "name": "Grupo A",
+                  "teacher": "Dr. Ana García",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "9:00",
+                      "end_time": "10:30",
+                      "extra_details": "Aula 201",
+                      "classroom": "201"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "9:00",
+                      "end_time": "10:30",
+                      "extra_details": "Aula 201",
+                      "classroom": "201"
+                    }
+                  ]
                 },
                 {
-                  "day": "Miércoles",
-                  "start_time": "09:00",
-                  "end_time": "10:30",
-                  "extra_details": "Aula 201",
-                  "classroom": "201"
+                  "id": "3B",
+                  "name": "Grupo B",
+                  "teacher": "Dr. Ana García",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "11:00",
+                      "end_time": "12:30",
+                      "extra_details": "Aula 202",
+                      "classroom": "202"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "11:00",
+                      "end_time": "12:30",
+                      "extra_details": "Aula 202",
+                      "classroom": "202"
+                    }
+                  ]
                 }
               ]
             },
             {
               "id": "4",
               "name": "Bases de Datos",
-              "teacher": "Ing. Carlos Ruiz",
-              "class_hours": [
+              "groups": [
                 {
-                  "day": "Martes",
-                  "start_time": "11:00",
-                  "end_time": "12:30",
-                  "extra_details": "Aula 202",
-                  "classroom": "202"
+                  "id": "4A",
+                  "name": "Grupo A",
+                  "teacher": "Ing. Carlos Ruiz",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "13:00",
+                      "end_time": "14:30",
+                      "extra_details": "Aula 203",
+                      "classroom": "203"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "13:00",
+                      "end_time": "14:30",
+                      "extra_details": "Aula 203",
+                      "classroom": "203"
+                    }
+                  ]
                 },
                 {
-                  "day": "Jueves",
-                  "start_time": "11:00",
-                  "end_time": "12:30",
-                  "extra_details": "Aula 202",
-                  "classroom": "202"
+                  "id": "4B",
+                  "name": "Grupo B",
+                  "teacher": "Ing. Carlos Ruiz",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "15:00",
+                      "end_time": "16:30",
+                      "extra_details": "Aula 204",
+                      "classroom": "204"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "15:00",
+                      "end_time": "16:30",
+                      "extra_details": "Aula 204",
+                      "classroom": "204"
+                    }
+                  ]
                 }
               ]
             }
@@ -100,50 +208,205 @@
       ]
     },
     {
-      "name": "Lic. en Ingeniería en Sistemas",
+      "name": "Lic. en Sistemas",
       "semesters": [
         {
           "name": "Primer Semestre",
           "subjects": [
             {
-              "id": "1",
-              "name": "Álgebra I",
-              "teacher": "Dr. Carlos Gómez",
-              "class_hours": [
+              "id": "5",
+              "name": "Álgebra",
+              "groups": [
                 {
-                  "day": "Lunes",
-                  "start_time": "09:00",
-                  "end_time": "10:30",
-                  "extra_details": "Aula 201",
-                  "classroom": "201"
+                  "id": "5A",
+                  "name": "Grupo A",
+                  "teacher": "Dr. Pedro Martínez",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "8:15",
+                      "end_time": "9:45",
+                      "extra_details": "Aula 301",
+                      "classroom": "301"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "8:15",
+                      "end_time": "9:45",
+                      "extra_details": "Aula 301",
+                      "classroom": "301"
+                    }
+                  ]
                 },
                 {
-                  "day": "Miércoles",
-                  "start_time": "09:00",
-                  "end_time": "10:30",
-                  "extra_details": "Aula 201",
-                  "classroom": "201"
+                  "id": "5B",
+                  "name": "Grupo B",
+                  "teacher": "Dr. Pedro Martínez",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 302",
+                      "classroom": "302"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 302",
+                      "classroom": "302"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "id": "2",
+              "id": "6",
               "name": "Introducción a la Programación",
-              "teacher": "Ing. Ana Martínez",
-              "class_hours": [
+              "groups": [
                 {
-                  "day": "Martes",
-                  "start_time": "11:00",
-                  "end_time": "12:30",
-                  "extra_details": "Aula 202",
-                  "classroom": "202"
+                  "id": "6A",
+                  "name": "Grupo A",
+                  "teacher": "Ing. Laura Gómez",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 303",
+                      "classroom": "303"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "10:00",
+                      "end_time": "11:30",
+                      "extra_details": "Aula 303",
+                      "classroom": "303"
+                    }
+                  ]
                 },
                 {
-                  "day": "Jueves",
-                  "start_time": "11:00",
-                  "end_time": "12:30",
-                  "extra_details": "Aula 202",
-                  "classroom": "202"
+                  "id": "6B",
+                  "name": "Grupo B",
+                  "teacher": "Ing. Laura Gómez",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "12:00",
+                      "end_time": "13:30",
+                      "extra_details": "Aula 304",
+                      "classroom": "304"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "12:00",
+                      "end_time": "13:30",
+                      "extra_details": "Aula 304",
+                      "classroom": "304"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Segundo Semestre",
+          "subjects": [
+            {
+              "id": "7",
+              "name": "Cálculo",
+              "groups": [
+                {
+                  "id": "7A",
+                  "name": "Grupo A",
+                  "teacher": "Dr. Luis Fernández",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "9:00",
+                      "end_time": "10:30",
+                      "extra_details": "Aula 401",
+                      "classroom": "401"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "9:00",
+                      "end_time": "10:30",
+                      "extra_details": "Aula 401",
+                      "classroom": "401"
+                    }
+                  ]
+                },
+                {
+                  "id": "7B",
+                  "name": "Grupo B",
+                  "teacher": "Dr. Luis Fernández",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "11:00",
+                      "end_time": "12:30",
+                      "extra_details": "Aula 402",
+                      "classroom": "402"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "11:00",
+                      "end_time": "12:30",
+                      "extra_details": "Aula 402",
+                      "classroom": "402"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "8",
+              "name": "Sistemas Operativos",
+              "groups": [
+                {
+                  "id": "8A",
+                  "name": "Grupo A",
+                  "teacher": "Ing. Marta Rodríguez",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "13:00",
+                      "end_time": "14:30",
+                      "extra_details": "Aula 403",
+                      "classroom": "403"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "13:00",
+                      "end_time": "14:30",
+                      "extra_details": "Aula 403",
+                      "classroom": "403"
+                    }
+                  ]
+                },
+                {
+                  "id": "8B",
+                  "name": "Grupo B",
+                  "teacher": "Ing. Marta Rodríguez",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "15:00",
+                      "end_time": "16:30",
+                      "extra_details": "Aula 404",
+                      "classroom": "404"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "15:00",
+                      "end_time": "16:30",
+                      "extra_details": "Aula 404",
+                      "classroom": "404"
+                    }
+                  ]
                 }
               ]
             }

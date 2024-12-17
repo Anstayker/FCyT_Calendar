@@ -75,7 +75,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
           children: days.asMap().entries.map((dayEntry) {
             String day = dayEntry.value;
             final selectedClass = widget.subjectsData.firstWhere(
-              (element) => element.hours.any(
+              (element) => element.groups[0].hours.any(
                 (schedule) {
                   return schedule.day == day && schedule.startTime == hour;
                 },
@@ -83,8 +83,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
               orElse: () => const CalendarSubject(
                 id: '',
                 name: '',
-                teacher: '',
-                hours: [],
+                groups: [],
               ),
             );
 

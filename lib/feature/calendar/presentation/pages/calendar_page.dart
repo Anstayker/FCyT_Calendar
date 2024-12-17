@@ -1,3 +1,4 @@
+import 'package:cappuchino_prototype/feature/calendar/domain/entities/calendar_subject_group.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ class _CalendarPageState extends State<CalendarPage> {
   CalendarCareer? selectedCareer;
   CalendarSemester? selectedSemester;
   CalendarSubject? selectedSubject;
+  CalendarSubjectGroup? selectedSubjectGroup;
   List<CalendarSubject> subjectsData = [];
   List<CalendarCareer> careersInfo = [];
 
@@ -34,6 +36,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   .add(CalendarGetAllCalendarInfoEvent());
             }
             if (state is CalendarGetAllCalendarInfoLoaded) {
+              print(state.calendarCareerList);
               careersInfo = state.calendarCareerList;
               return layoutBuilder(context, careersInfo, subjectsData);
             }

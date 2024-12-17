@@ -1,20 +1,18 @@
 import 'package:equatable/equatable.dart';
 
-import 'calendar_class_schedule.dart';
+import 'calendar_subject_group.dart';
 
 class CalendarSubject extends Equatable {
   final String id;
   final String name;
-  final String teacher;
-  final List<CalendarClassSchedule> hours;
+  final List<CalendarSubjectGroup> groups;
 
   const CalendarSubject({
     required this.id,
     required this.name,
-    required this.teacher,
-    required this.hours,
+    required this.groups,
   });
 
   @override
-  List<Object?> get props => [id, name, teacher, hours];
+  List<Object?> get props => [id, name, groups];
 }
