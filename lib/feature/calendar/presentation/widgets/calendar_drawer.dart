@@ -15,6 +15,7 @@ class CalendarDrawer extends StatefulWidget {
     required this.onSemesterSelected,
     required this.onSubjectSelected,
     required this.onSubjectGroupSelected,
+    required this.selectedGroups,
     required this.onBack,
     this.selectedCareer,
     this.selectedSemester,
@@ -31,6 +32,7 @@ class CalendarDrawer extends StatefulWidget {
   final Function(CalendarSemester) onSemesterSelected;
   final Function(CalendarSubject) onSubjectSelected;
   final Function(CalendarSubjectGroup) onSubjectGroupSelected;
+  final Set<CalendarSubjectGroup> selectedGroups;
   final VoidCallback onBack;
 
   @override
@@ -52,34 +54,50 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
                   career: career,
                   onTap: () => widget.onCareerSelected(career),
                 ))
-          else if (widget.selectedSemester == null)
-            ...widget.selectedCareer!.semesters
-                .map((semester) => SemesterListTile(
-                      semester: semester,
-                      onTap: () => widget.onSemesterSelected(semester),
-                    ))
           else
-            ...widget.selectedSemester!.subjects.expand((subject) {
+            ...widget.selectedCareer!.semesters.expand((semester) {
               return [
-                SubjectListTile(
-                  subject: subject,
+                SemesterListTile(
+                  semester: semester,
                   onTap: () {
                     setState(() {
-                      if (expandedSubjects.contains(subject)) {
-                        expandedSubjects.remove(subject);
+                      if (expandedSemesters.contains(semester)) {
+                        expandedSemesters.remove(semester);
                       } else {
-                        expandedSubjects.add(subject);
+                        expandedSemesters.add(semester);
                       }
-                      widget.onSubjectSelected(subject);
+                      widget.onSemesterSelected(semester);
                     });
                   },
                 ),
-                if (expandedSubjects.contains(subject))
-                  ...subject.groups.map((subjectGroup) => SubjectGroupListTile(
-                        subjectGroup: subjectGroup,
-                        onTap: () =>
-                            widget.onSubjectGroupSelected(subjectGroup),
-                      ))
+                if (expandedSemesters.contains(semester))
+                  ...semester.subjects.expand((subject) {
+                    return [
+                      SubjectListTile(
+                        subject: subject,
+                        onTap: () {
+                          setState(() {
+                            if (expandedSubjects.contains(subject)) {
+                              expandedSubjects.remove(subject);
+                            } else {
+                              expandedSubjects.add(subject);
+                            }
+                            widget.onSubjectSelected(subject);
+                          });
+                        },
+                      ),
+                      if (expandedSubjects.contains(subject))
+                        ...subject.groups
+                            .map((subjectGroup) => SubjectGroupListTile(
+                                  subjectGroup: subjectGroup,
+                                  isSelected: widget.selectedGroups
+                                      .contains(subjectGroup),
+                                  onTap: () {
+                                    widget.onSubjectGroupSelected(subjectGroup);
+                                  },
+                                ))
+                    ];
+                  })
               ];
             }),
         ],
@@ -88,6 +106,13 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
   }
 
   Widget drawerCareerTitle() {
+    String title;
+
+    if (widget.selectedCareer == null) {
+      title = 'Carreras Disponibles';
+    } else {
+      title = 'Seleccionar Materias';
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -114,7 +139,7 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
                   )
                 : null,
           ),
-          const Text('Carreras disponibles', style: TextStyle(fontSize: 20)),
+          Text(title, style: const TextStyle(fontSize: 20)),
         ],
       ),
     );

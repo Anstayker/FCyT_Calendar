@@ -14,9 +14,12 @@ class SubjectListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(subject.name),
-      onTap: onTap,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: ListTile(
+        title: Text(subject.name),
+        onTap: onTap,
+      ),
     );
   }
 }

@@ -24,6 +24,7 @@ class _CalendarPageState extends State<CalendarPage> {
   CalendarSubjectGroup? selectedSubjectGroup;
   List<CalendarSubjectGroup> subjectsData = [];
   List<CalendarCareer> careersInfo = [];
+  Set<CalendarSubjectGroup> selectedGroups = {};
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +110,7 @@ class _CalendarPageState extends State<CalendarPage> {
       },
       onSemesterSelected: (semester) {
         setState(() {
-          selectedSemester = semester;
+          // selectedSemester = semester;
           selectedSubject = null;
           selectedSubjectGroup = null;
         });
@@ -123,6 +124,11 @@ class _CalendarPageState extends State<CalendarPage> {
       onSubjectGroupSelected: (subjectGroup) {
         setState(() {
           // selectedSubjectGroup = subjectGroup;
+          if (selectedGroups.contains(subjectGroup)) {
+            selectedGroups.remove(subjectGroup);
+          } else {
+            selectedGroups.add(subjectGroup);
+          }
           BlocProvider.of<CalendarBloc>(context)
               .add(CalendarSetSubjectInCalendar(calendarSubject: subjectGroup));
         });
@@ -144,6 +150,7 @@ class _CalendarPageState extends State<CalendarPage> {
       selectedSemester: selectedSemester,
       selectedSubject: selectedSubject,
       selectedSubjectGroup: selectedSubjectGroup,
+      selectedGroups: selectedGroups,
     );
   }
 
