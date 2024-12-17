@@ -77,10 +77,6 @@ class _MobileCalendarState extends State<MobileCalendar> {
             final selectedClass = widget.subjectsData.firstWhere(
               (element) => element.hours.any(
                 (schedule) {
-                  print(
-                      'Comparing schedule.day: ${schedule.day} with day: $day');
-                  print(
-                      'Comparing schedule.startTime: ${schedule.startTime} with hour: $hour');
                   return schedule.day == day && schedule.startTime == hour;
                 },
               ),
