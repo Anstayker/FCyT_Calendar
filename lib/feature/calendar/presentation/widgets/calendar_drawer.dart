@@ -43,8 +43,7 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
                   career: career,
                   onTap: () => widget.onCareerSelected(career),
                 ))
-          else ...[
-            BackButton(onPressed: widget.onBack),
+          else
             ...widget.selectedCareer!.semesters.map((semester) => Column(
                   children: [
                     SemesterListTile(
@@ -67,16 +66,41 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
                           ))
                   ],
                 ))
-          ],
         ],
       ),
     );
   }
 
   Widget drawerCareerTitle() {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text('Carreras disponibles', style: TextStyle(fontSize: 20)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 48,
+            child: widget.selectedCareer != null
+                ? SizedBox(
+                    width: 48,
+                    child: IconButton(
+                      visualDensity:
+                          const VisualDensity(vertical: -4, horizontal: -4),
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        if (expandedSemesters.isNotEmpty) {
+                          setState(() {
+                            expandedSemesters.clear();
+                          });
+                        } else {
+                          widget.onBack();
+                        }
+                      },
+                    ),
+                  )
+                : null,
+          ),
+          const Text('Carreras disponibles', style: TextStyle(fontSize: 20)),
+        ],
+      ),
     );
   }
 }

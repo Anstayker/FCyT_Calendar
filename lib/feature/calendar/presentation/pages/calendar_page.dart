@@ -20,6 +20,8 @@ class _CalendarPageState extends State<CalendarPage> {
   CalendarCareer? selectedCareer;
   CalendarSemester? selectedSemester;
   CalendarSubject? selectedSubject;
+  List<CalendarSubject> subjectsData = [];
+  List<CalendarCareer> careersInfo = [];
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +34,22 @@ class _CalendarPageState extends State<CalendarPage> {
                   .add(CalendarGetAllCalendarInfoEvent());
             }
             if (state is CalendarGetAllCalendarInfoLoaded) {
-              return layoutBuilder(state.calendarCareerList);
+              careersInfo = state.calendarCareerList;
+              return layoutBuilder(context, careersInfo, subjectsData);
             }
-            return const Center(child: CircularProgressIndicator());
+            if (state is CalendarSetSubjectInCalendar) {
+              print('object');
+            }
+
+            return layoutBuilder(context, careersInfo, subjectsData);
           },
         ));
   }
 
-  LayoutBuilder layoutBuilder(List<CalendarCareer> careersList) {
+  LayoutBuilder layoutBuilder(
+      BuildContext context,
+      List<CalendarCareer> careersList,
+      List<CalendarSubject> selectedSubjects) {
     return LayoutBuilder(
       builder: (context, constraints) {
         // TODO: Revisar el maxWidth
@@ -51,7 +61,7 @@ class _CalendarPageState extends State<CalendarPage> {
               children: [
                 SizedBox(
                   width: 250,
-                  child: calendarDrawer(careersList),
+                  child: calendarDrawer(careersList, context),
                 ),
                 Expanded(child: buildBody()),
                 SizedBox(
@@ -74,7 +84,7 @@ class _CalendarPageState extends State<CalendarPage> {
           return Scaffold(
             appBar: calendarAppBar(),
             body: buildBody(),
-            drawer: calendarDrawer(careersList),
+            drawer: calendarDrawer(careersList, context),
             floatingActionButton: mobileMainFab(),
           );
         }
@@ -82,7 +92,8 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 
-  CalendarDrawer calendarDrawer(List<CalendarCareer> careersList) {
+  CalendarDrawer calendarDrawer(
+      List<CalendarCareer> careersList, BuildContext context) {
     return CalendarDrawer(
       careersList: careersList,
       onCareerSelected: (career) {
@@ -101,6 +112,8 @@ class _CalendarPageState extends State<CalendarPage> {
         });
       },
       onSubjectSelected: (subject) {
+        BlocProvider.of<CalendarBloc>(context)
+            .add(CalendarSetSubjectInCalendar(calendarSubject: subject));
         setState(() {
           selectedSubject = subject;
         });

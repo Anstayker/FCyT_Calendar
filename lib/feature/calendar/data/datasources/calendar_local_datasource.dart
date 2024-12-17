@@ -2,14 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
 
+import '../../../../core/error/failures.dart';
 import '../../domain/entities/calendar_career.dart';
+import '../../domain/entities/calendar_subject.dart';
 import '../models/calendar_career_model.dart';
 
 abstract class CalendarLocalDatasource {
   Future<List<CalendarCareer>> getAllCalendarInfo();
+  Future<void> setSubjectInCalendar(CalendarSubject calendarSubject);
 }
 
 class CalendarLocalDatasourceImpl implements CalendarLocalDatasource {
+  final Set<CalendarSubject> _cache = {};
+
   @override
   Future<List<CalendarCareer>> getAllCalendarInfo() async {
     try {
@@ -20,5 +25,19 @@ class CalendarLocalDatasourceImpl implements CalendarLocalDatasource {
     } catch (e) {
       return [];
     }
+  }
+
+  @override
+  Future<void> setSubjectInCalendar(CalendarSubject calendarSubject) {
+    try {
+      if (_cache.contains(calendarSubject)) {
+        _cache.remove(calendarSubject);
+      } else {
+        _cache.add(calendarSubject);
+      }
+    } catch (e) {
+      throw CacheFailure();
+    }
+    return Future.value();
   }
 }

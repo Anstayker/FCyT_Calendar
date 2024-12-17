@@ -28,3 +28,7 @@ final class CalendarGetAllCalendarInfoLoaded extends CalendarState {
   @override
   List<Object> get props => [calendarCareerList];
 }
+
+final class CalendarSetSubjectInCalendarLoading extends CalendarState {}
+
+final class CalendarSetSubjectInCalendarLoaded extends CalendarState {}

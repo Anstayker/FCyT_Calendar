@@ -8,3 +8,12 @@ sealed class CalendarEvent extends Equatable {
 }
 
 class CalendarGetAllCalendarInfoEvent extends CalendarEvent {}
+
+class CalendarSetSubjectInCalendar extends CalendarEvent {
+  final CalendarSubject calendarSubject;
+
+  const CalendarSetSubjectInCalendar({required this.calendarSubject});
+
+  @override
+  List<Object> get props => [calendarSubject];
+}

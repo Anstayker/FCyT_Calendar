@@ -23,7 +23,19 @@ class CalendarRepositoryImpl implements CalendarRepository {
   }
 
   @override
-  Future<Either<Failure, List<String>>> getCalendarFromCache() {
+  Future<Either<Failure, List<CalendarSubject>>> setSubjectInCalendar(
+      CalendarSubject calendarSubjectId) async {
+    try {
+      final result =
+          await calendarLocalDatasource.setSubjectInCalendar(calendarSubjectId);
+      return const Right(result);
+    } on CacheFailure {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<String>>> getCalendarFromCache() async {
     // TODO: implement getCalendarFromCache
     throw UnimplementedError();
   }
@@ -36,7 +48,7 @@ class CalendarRepositoryImpl implements CalendarRepository {
 
   @override
   Future<Either<Failure, bool>> removeSubjectInCalendar(
-      String calendarSubjectId) {
+      CalendarSubject calendarSubjectId) {
     // TODO: implement removeSubjectInCalendar
     throw UnimplementedError();
   }
@@ -45,12 +57,6 @@ class CalendarRepositoryImpl implements CalendarRepository {
   Future<Either<Failure, bool>> saveCalendarInCache(
       List<CalendarSubject> calendarSubjects) {
     // TODO: implement saveCalendarInCache
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, bool>> setSubjectInCalendar(String calendarSubjectId) {
-    // TODO: implement setSubjectInCalendar
     throw UnimplementedError();
   }
 }
