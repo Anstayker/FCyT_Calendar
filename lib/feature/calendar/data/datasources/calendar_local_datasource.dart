@@ -14,8 +14,9 @@ class CalendarLocalDatasourceImpl implements CalendarLocalDatasource {
   Future<List<CalendarCareer>> getAllCalendarInfo() async {
     try {
       final result = await rootBundle.loadString('assets/calendar_info.json');
-      final List<dynamic> data = json.decode(result);
-      return data.map((e) => CalendarCareerModel.fromJson(e)).toList();
+      final Map<String, dynamic> jsonData = json.decode(result);
+      final List<dynamic> careersData = jsonData['careers'];
+      return careersData.map((e) => CalendarCareerModel.fromJson(e)).toList();
     } catch (e) {
       return [];
     }

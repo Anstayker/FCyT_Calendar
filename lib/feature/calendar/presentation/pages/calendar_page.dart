@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection_container.dart';
+import '../../domain/entities/calendar_career.dart';
+import '../../domain/entities/calendar_semester.dart';
+import '../../domain/entities/calendar_subject.dart';
 import '../bloc/calendar_bloc.dart';
 import '../widgets/mobile_calendar_widgets.dart';
 
-class CalendarPage extends StatelessWidget {
+class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
+
+  @override
+  State<CalendarPage> createState() => _CalendarPageState();
+}
+
+class _CalendarPageState extends State<CalendarPage> {
+  CalendarCareer? selectedCareer;
+  CalendarSemester? selectedSemester;
+  CalendarSubject? selectedSubject;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +32,14 @@ class CalendarPage extends StatelessWidget {
                   .add(CalendarGetAllCalendarInfoEvent());
             }
             if (state is CalendarGetAllCalendarInfoLoaded) {
-              print(state.calendarCareerList);
-              return layoutBuilder();
+              return layoutBuilder(state.calendarCareerList);
             }
             return const Center(child: CircularProgressIndicator());
           },
         ));
   }
 
-  LayoutBuilder layoutBuilder() {
+  LayoutBuilder layoutBuilder(List<CalendarCareer> careersList) {
     return LayoutBuilder(
       builder: (context, constraints) {
         // TODO: Revisar el maxWidth
@@ -37,7 +49,10 @@ class CalendarPage extends StatelessWidget {
             appBar: calendarAppBar(),
             body: Row(
               children: [
-                SizedBox(width: 250, child: calendarDrawer()),
+                SizedBox(
+                  width: 250,
+                  child: calendarDrawer(careersList),
+                ),
                 Expanded(child: buildBody()),
                 SizedBox(
                   width: 50,
@@ -59,7 +74,7 @@ class CalendarPage extends StatelessWidget {
           return Scaffold(
             appBar: calendarAppBar(),
             body: buildBody(),
-            drawer: calendarDrawer(),
+            drawer: calendarDrawer(careersList),
             floatingActionButton: mobileMainFab(),
           );
         }
@@ -67,40 +82,38 @@ class CalendarPage extends StatelessWidget {
     );
   }
 
+  CalendarDrawer calendarDrawer(List<CalendarCareer> careersList) {
+    return CalendarDrawer(
+      careersList: careersList,
+      onCareerSelected: (career) {
+        setState(() {
+          selectedCareer = career;
+          selectedSemester = null;
+          selectedSubject = null;
+        });
+      },
+      onSemesterSelected: (semester) {
+        setState(() {
+          selectedSemester = semester;
+          selectedSubject = null;
+        });
+      },
+      onSubjectSelected: (subject) {
+        setState(() {
+          selectedSubject = subject;
+        });
+      },
+      selectedCareer: selectedCareer,
+      selectedSemester: selectedSemester,
+    );
+  }
+
   Widget buildBody() {
     return const MobileCalendar();
   }
 
-  Drawer calendarDrawer() {
-    return Drawer(
-      child: ListView(
-        children: [
-          drawerCareerTitle(),
-          careerListTile('Ingeniería en Sistemas'),
-          careerListTile('Ingeniería en Electrónica'),
-          careerListTile('Ingeniería en Mecatrónica'),
-          careerListTile('Ingeniería en Industrial'),
-        ],
-      ),
-    );
-  }
-
-  Padding drawerCareerTitle() {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text('Carreras disponibles', style: TextStyle(fontSize: 20)),
-    );
-  }
-
   FloatingActionButton mobileMainFab() {
     return FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add));
-  }
-
-  ListTile careerListTile(String careerName) {
-    return ListTile(
-      title: Text(careerName),
-      onTap: () {},
-    );
   }
 
   AppBar calendarAppBar() {
