@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'core/routes/app_routes.dart';
 import 'feature/calendar/presentation/pages/calendar_page.dart';
+import 'injection_container.dart' as dependencies;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await dependencies init();
+  await dependencies.init();
 
   runApp(const MainApp());
 }

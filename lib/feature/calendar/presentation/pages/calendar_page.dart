@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../injection_container.dart';
+import '../bloc/calendar_bloc.dart';
 import '../widgets/mobile_calendar_widgets.dart';
 
 class CalendarPage extends StatelessWidget {
@@ -7,6 +10,24 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+        create: (context) => sl<CalendarBloc>(),
+        child: BlocBuilder<CalendarBloc, CalendarState>(
+          builder: (context, state) {
+            if (state is CalendarInitial) {
+              BlocProvider.of<CalendarBloc>(context)
+                  .add(CalendarGetAllCalendarInfoEvent());
+            }
+            if (state is CalendarGetAllCalendarInfoLoaded) {
+              print(state.calendarCareerList);
+              return layoutBuilder();
+            }
+            return const Center(child: CircularProgressIndicator());
+          },
+        ));
+  }
+
+  LayoutBuilder layoutBuilder() {
     return LayoutBuilder(
       builder: (context, constraints) {
         // TODO: Revisar el maxWidth
