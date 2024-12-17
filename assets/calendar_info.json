@@ -1,108 +1,155 @@
 {
-    "careers": [
-      {
-        "name": "Lic. en Ingeniería Informática",
-        "semesters": [
-          {
-            "name": "Primer Semestre",
-            "subjects": [
-              {
-                "id": "1",
-                "name": "Matemáticas I",
-                "teacher": "Dr. Juan Pérez",
-                "class_hours": [
-                  {
-                    "day": "Lunes",
-                    "start_time": "08:00",
-                    "end_time": "09:30",
-                    "extra_details": "Aula 101",
-                    "classroom": "101"
-                  },
-                  {
-                    "day": "Miércoles",
-                    "start_time": "08:00",
-                    "end_time": "09:30",
-                    "extra_details": "Aula 101",
-                    "classroom": "101"
-                  }
-                ]
-              },
-              {
-                "id": "2",
-                "name": "Programación I",
-                "teacher": "Ing. María López",
-                "class_hours": [
-                  {
-                    "day": "Martes",
-                    "start_time": "10:00",
-                    "end_time": "11:30",
-                    "extra_details": "Aula 102",
-                    "classroom": "102"
-                  },
-                  {
-                    "day": "Jueves",
-                    "start_time": "10:00",
-                    "end_time": "11:30",
-                    "extra_details": "Aula 102",
-                    "classroom": "102"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Lic. en Ingeniería en Sistemas",
-        "semesters": [
-          {
-            "name": "Primer Semestre",
-            "subjects": [
-              {
-                "id": "1",
-                "name": "Álgebra I",
-                "teacher": "Dr. Carlos Gómez",
-                "class_hours": [
-                  {
-                    "day": "Lunes",
-                    "start_time": "09:00",
-                    "end_time": "10:30",
-                    "extra_details": "Aula 201",
-                    "classroom": "201"
-                  },
-                  {
-                    "day": "Miércoles",
-                    "start_time": "09:00",
-                    "end_time": "10:30",
-                    "extra_details": "Aula 201",
-                    "classroom": "201"
-                  }
-                ]
-              },
-              {
-                "id": "2",
-                "name": "Introducción a la Programación",
-                "teacher": "Ing. Ana Martínez",
-                "class_hours": [
-                  {
-                    "day": "Martes",
-                    "start_time": "11:00",
-                    "end_time": "12:30",
-                    "extra_details": "Aula 202",
-                    "classroom": "202"
-                  },
-                  {
-                    "day": "Jueves",
-                    "start_time": "11:00",
-                    "end_time": "12:30",
-                    "extra_details": "Aula 202",
-                    "classroom": "202"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "careers": [
+    {
+      "name": "Lic. en Ingeniería Informática",
+      "semesters": [
+        {
+          "name": "Primer Semestre",
+          "subjects": [
+            {
+              "id": "1",
+              "name": "Matemáticas I",
+              "teacher": "Dr. Juan Pérez",
+              "class_hours": [
+                {
+                  "day": "Lunes",
+                  "start_time": "08:00",
+                  "end_time": "09:30",
+                  "extra_details": "Aula 101",
+                  "classroom": "101"
+                },
+                {
+                  "day": "Miércoles",
+                  "start_time": "08:00",
+                  "end_time": "09:30",
+                  "extra_details": "Aula 101",
+                  "classroom": "101"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Programación I",
+              "teacher": "Ing. María López",
+              "class_hours": [
+                {
+                  "day": "Martes",
+                  "start_time": "10:00",
+                  "end_time": "11:30",
+                  "extra_details": "Aula 102",
+                  "classroom": "102"
+                },
+                {
+                  "day": "Jueves",
+                  "start_time": "10:00",
+                  "end_time": "11:30",
+                  "extra_details": "Aula 102",
+                  "classroom": "102"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Segundo Semestre",
+          "subjects": [
+            {
+              "id": "3",
+              "name": "Estructuras de Datos",
+              "teacher": "Dr. Ana García",
+              "class_hours": [
+                {
+                  "day": "Lunes",
+                  "start_time": "09:00",
+                  "end_time": "10:30",
+                  "extra_details": "Aula 201",
+                  "classroom": "201"
+                },
+                {
+                  "day": "Miércoles",
+                  "start_time": "09:00",
+                  "end_time": "10:30",
+                  "extra_details": "Aula 201",
+                  "classroom": "201"
+                }
+              ]
+            },
+            {
+              "id": "4",
+              "name": "Bases de Datos",
+              "teacher": "Ing. Carlos Ruiz",
+              "class_hours": [
+                {
+                  "day": "Martes",
+                  "start_time": "11:00",
+                  "end_time": "12:30",
+                  "extra_details": "Aula 202",
+                  "classroom": "202"
+                },
+                {
+                  "day": "Jueves",
+                  "start_time": "11:00",
+                  "end_time": "12:30",
+                  "extra_details": "Aula 202",
+                  "classroom": "202"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lic. en Ingeniería en Sistemas",
+      "semesters": [
+        {
+          "name": "Primer Semestre",
+          "subjects": [
+            {
+              "id": "1",
+              "name": "Álgebra I",
+              "teacher": "Dr. Carlos Gómez",
+              "class_hours": [
+                {
+                  "day": "Lunes",
+                  "start_time": "09:00",
+                  "end_time": "10:30",
+                  "extra_details": "Aula 201",
+                  "classroom": "201"
+                },
+                {
+                  "day": "Miércoles",
+                  "start_time": "09:00",
+                  "end_time": "10:30",
+                  "extra_details": "Aula 201",
+                  "classroom": "201"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Introducción a la Programación",
+              "teacher": "Ing. Ana Martínez",
+              "class_hours": [
+                {
+                  "day": "Martes",
+                  "start_time": "11:00",
+                  "end_time": "12:30",
+                  "extra_details": "Aula 202",
+                  "classroom": "202"
+                },
+                {
+                  "day": "Jueves",
+                  "start_time": "11:00",
+                  "end_time": "12:30",
+                  "extra_details": "Aula 202",
+                  "classroom": "202"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

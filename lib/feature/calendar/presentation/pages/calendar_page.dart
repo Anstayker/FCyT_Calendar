@@ -94,13 +94,26 @@ class _CalendarPageState extends State<CalendarPage> {
       },
       onSemesterSelected: (semester) {
         setState(() {
-          selectedSemester = semester;
+          // No sé por qué esto provoca que se deba apretar 2 veces
+          // El botón de back para retroceder a la lista de carreras
+          // selectedSemester = semester;
           selectedSubject = null;
         });
       },
       onSubjectSelected: (subject) {
         setState(() {
           selectedSubject = subject;
+        });
+      },
+      onBack: () {
+        setState(() {
+          if (selectedSubject != null) {
+            selectedSubject = null;
+          } else if (selectedSemester != null) {
+            selectedSemester = null;
+          } else if (selectedCareer != null) {
+            selectedCareer = null;
+          }
         });
       },
       selectedCareer: selectedCareer,

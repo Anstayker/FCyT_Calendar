@@ -7,10 +7,10 @@ class SemesterListTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SemesterListTile({
-    Key? key,
+    super.key,
     required this.semester,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

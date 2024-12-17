@@ -5,13 +5,14 @@ import '../../domain/entities/calendar_semester.dart';
 import '../../domain/entities/calendar_subject.dart';
 import 'mobile_calendar_widgets.dart';
 
-class CalendarDrawer extends StatelessWidget {
+class CalendarDrawer extends StatefulWidget {
   const CalendarDrawer({
     super.key,
     required this.careersList,
     required this.onCareerSelected,
     required this.onSemesterSelected,
     required this.onSubjectSelected,
+    required this.onBack,
     this.selectedCareer,
     this.selectedSemester,
   });
@@ -22,6 +23,14 @@ class CalendarDrawer extends StatelessWidget {
   final Function(CalendarCareer) onCareerSelected;
   final Function(CalendarSemester) onSemesterSelected;
   final Function(CalendarSubject) onSubjectSelected;
+  final VoidCallback onBack;
+
+  @override
+  State<CalendarDrawer> createState() => _CalendarDrawerState();
+}
+
+class _CalendarDrawerState extends State<CalendarDrawer> {
+  Set<CalendarSemester> expandedSemesters = {};
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +38,36 @@ class CalendarDrawer extends StatelessWidget {
       child: ListView(
         children: [
           drawerCareerTitle(),
-          if (selectedCareer == null)
-            ...careersList.map((career) => CareerListTile(
+          if (widget.selectedCareer == null)
+            ...widget.careersList.map((career) => CareerListTile(
                   career: career,
-                  onTap: () => onCareerSelected(career),
+                  onTap: () => widget.onCareerSelected(career),
                 ))
-          else if (selectedSemester == null)
-            ...selectedCareer!.semesters.map((semester) => SemesterListTile(
-                  semester: semester,
-                  onTap: () => onSemesterSelected(semester),
+          else ...[
+            BackButton(onPressed: widget.onBack),
+            ...widget.selectedCareer!.semesters.map((semester) => Column(
+                  children: [
+                    SemesterListTile(
+                      semester: semester,
+                      onTap: () {
+                        setState(() {
+                          if (expandedSemesters.contains(semester)) {
+                            expandedSemesters.remove(semester);
+                          } else {
+                            expandedSemesters.add(semester);
+                          }
+                          widget.onSemesterSelected(semester);
+                        });
+                      },
+                    ),
+                    if (expandedSemesters.contains(semester))
+                      ...semester.subjects.map((subject) => SubjectListTile(
+                            subject: subject,
+                            onTap: () => widget.onSubjectSelected(subject),
+                          ))
+                  ],
                 ))
-          else
-            ...selectedSemester!.subjects.map((subject) => SubjectListTile(
-                  subject: subject,
-                  onTap: () => onSubjectSelected(subject),
-                )),
+          ],
         ],
       ),
     );
