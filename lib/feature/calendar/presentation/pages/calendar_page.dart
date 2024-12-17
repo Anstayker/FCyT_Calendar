@@ -25,6 +25,8 @@ class _CalendarPageState extends State<CalendarPage> {
   List<CalendarSubjectGroup> subjectsData = [];
   List<CalendarCareer> careersInfo = [];
   Set<CalendarSubjectGroup> selectedGroups = {};
+  bool showAdditionalFabs = false;
+  bool isHorizontal = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +60,10 @@ class _CalendarPageState extends State<CalendarPage> {
       builder: (context, constraints) {
         // TODO: Revisar el maxWidth
         if (constraints.maxWidth > 800) {
+          isHorizontal = true;
           // ! Web Version
           return Scaffold(
-            appBar: calendarAppBar(),
+            appBar: webCalendarAppBar(),
             body: Row(
               children: [
                 SizedBox(
@@ -71,12 +74,44 @@ class _CalendarPageState extends State<CalendarPage> {
                 SizedBox(
                   width: 50,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
                       IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.edit)),
+                        onPressed: () {},
+                        icon: const Icon(Icons.print_outlined),
+                        iconSize: 30,
+                        tooltip: 'Imprimir',
+                      ),
                       IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.delete)),
+                        onPressed: () {},
+                        icon: const Icon(Icons.save_outlined),
+                        iconSize: 30,
+                        tooltip: 'Guardar',
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.map_outlined),
+                        iconSize: 30,
+                        tooltip: 'Mapa',
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.lightbulb_outline),
+                        iconSize: 30,
+                        tooltip: 'Sugerir Horario',
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.color_lens_outlined),
+                        iconSize: 30,
+                        tooltip: 'Cambiar Colores',
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.info_outline),
+                        iconSize: 30,
+                        tooltip: 'Información',
+                      ),
                     ],
                   ),
                 ),
@@ -84,15 +119,38 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
           );
         } else {
+          isHorizontal = false;
           // ! Mobile Version
           return Scaffold(
-            appBar: calendarAppBar(),
+            appBar: mobileCalendarAppBar(),
             body: buildBody(subjectsData),
             drawer: calendarDrawer(careersList, context),
-            floatingActionButton: mobileMainFab(),
+            floatingActionButton: MobileFab(
+              showAdditionalFabs: showAdditionalFabs,
+              onMainFabPressed: () {
+                setState(() {
+                  showAdditionalFabs = !showAdditionalFabs;
+                });
+              },
+            ),
           );
         }
       },
+    );
+  }
+
+  GestureDetector semiTransparentContainer() {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          showAdditionalFabs = false;
+        });
+      },
+      child: Container(
+        color: Colors.black.withOpacity(0.5),
+        width: double.infinity,
+        height: double.infinity,
+      ),
     );
   }
 
@@ -155,14 +213,15 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Widget buildBody(List<CalendarSubjectGroup> subjectsData) {
-    return MobileCalendar(subjectsData: subjectsData);
+    return Stack(
+      children: [
+        MobileCalendar(subjectsData: subjectsData),
+        if (showAdditionalFabs) semiTransparentContainer(),
+      ],
+    );
   }
 
-  FloatingActionButton mobileMainFab() {
-    return FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add));
-  }
-
-  AppBar calendarAppBar() {
+  AppBar mobileCalendarAppBar() {
     return AppBar(
       title: const Row(
         children: [
@@ -173,7 +232,33 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
       actions: [
         IconButton(onPressed: () {}, icon: const Icon(Icons.calendar_month)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.help_outline)),
+      ],
+    );
+  }
+
+  AppBar webCalendarAppBar() {
+    return AppBar(
+      title: const Row(
+        children: [
+          Icon(Icons.coffee),
+          SizedBox(width: 20),
+          Text('Cappuchino UMSS'),
+        ],
+      ),
+      actions: [
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.calendar_month, color: Colors.black),
+          label:
+              const Text('Mis Horarios', style: TextStyle(color: Colors.black)),
+        ),
+        const SizedBox(width: 20),
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.help_outline, color: Colors.black),
+          label: const Text('Ayuda', style: TextStyle(color: Colors.black)),
+        ),
       ],
     );
   }
