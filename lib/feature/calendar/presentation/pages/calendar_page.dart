@@ -8,7 +8,7 @@ import '../../domain/entities/calendar_career.dart';
 import '../../domain/entities/calendar_semester.dart';
 import '../../domain/entities/calendar_subject.dart';
 import '../bloc/calendar_bloc.dart';
-import '../widgets/mobile_calendar_widgets.dart';
+import '../widgets/widgets_export_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -71,50 +71,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   child: calendarDrawer(careersList, context),
                 ),
                 Expanded(child: buildBody(subjectsData)),
-                SizedBox(
-                  width: 50,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.print_outlined),
-                        iconSize: 30,
-                        tooltip: 'Imprimir',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.save_outlined),
-                        iconSize: 30,
-                        tooltip: 'Guardar',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.map_outlined),
-                        iconSize: 30,
-                        tooltip: 'Mapa',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.lightbulb_outline),
-                        iconSize: 30,
-                        tooltip: 'Sugerir Horario',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.color_lens_outlined),
-                        iconSize: 30,
-                        tooltip: 'Cambiar Colores',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.info_outline),
-                        iconSize: 30,
-                        tooltip: 'Información',
-                      ),
-                    ],
-                  ),
-                ),
+                const WebSideBar(),
               ],
             ),
           );

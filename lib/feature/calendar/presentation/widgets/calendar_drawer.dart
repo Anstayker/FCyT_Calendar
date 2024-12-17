@@ -5,7 +5,7 @@ import '../../domain/entities/calendar_semester.dart';
 import '../../domain/entities/calendar_subject.dart';
 import '../../domain/entities/calendar_subject_group.dart';
 
-import 'mobile_calendar_widgets.dart';
+import 'widgets_export_calendar.dart';
 
 class CalendarDrawer extends StatefulWidget {
   const CalendarDrawer({

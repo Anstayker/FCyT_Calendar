@@ -5,3 +5,5 @@ export 'semester_list_tile.dart';
 export 'subject_list_tile.dart';
 export 'subject_group_list_tile.dart';
 export 'mobile_fab.dart';
+export 'web_side_bar.dart';
+export 'dialog_save.dart';
