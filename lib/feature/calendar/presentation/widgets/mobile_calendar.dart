@@ -33,7 +33,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
       '21:45'
     ];
 
-    final List<String> days = ['L', 'M', 'M', 'J', 'V', 'S'];
+    final List<String> days = ['L', 'M', 'X', 'J', 'V', 'S'];
 
     return Column(
       children: [
@@ -89,7 +89,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
             );
 
             return Container(
-              height: 45,
+              height: 60,
               width: MediaQuery.of(context).size.width / 6 - 10,
               decoration: BoxDecoration(
                 color: selectedGroup.name.isNotEmpty
@@ -98,7 +98,20 @@ class _MobileCalendarState extends State<MobileCalendar> {
                 border: Border.all(color: Colors.grey[350]!),
               ),
               child: selectedGroup.name.isNotEmpty
-                  ? Center(child: Text(selectedGroup.name))
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          selectedGroup.name,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          selectedGroup.id,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    )
                   : null,
             );
           }).toList(),

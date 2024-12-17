@@ -38,15 +38,15 @@
                   "hours": [
                     {
                       "day": "X",
-                      "start_time": "10:00",
-                      "end_time": "11:30",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
                       "extra_details": "Aula 102",
                       "classroom": "102"
                     },
                     {
                       "day": "J",
-                      "start_time": "10:00",
-                      "end_time": "11:30",
+                      "start_time": "9:45",
+                      "end_time": "11:15",
                       "extra_details": "Aula 102",
                       "classroom": "102"
                     }
@@ -65,15 +65,15 @@
                   "hours": [
                     {
                       "day": "L",
-                      "start_time": "10:00",
-                      "end_time": "11:30",
+                      "start_time": "9:45",
+                      "end_time": "11:15",
                       "extra_details": "Aula 103",
                       "classroom": "103"
                     },
                     {
                       "day": "M",
-                      "start_time": "10:00",
-                      "end_time": "11:30",
+                      "start_time": "9:45",
+                      "end_time": "11:15",
                       "extra_details": "Aula 103",
                       "classroom": "103"
                     }
@@ -86,15 +86,15 @@
                   "hours": [
                     {
                       "day": "X",
-                      "start_time": "12:00",
-                      "end_time": "13:30",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
                       "extra_details": "Aula 104",
                       "classroom": "104"
                     },
                     {
                       "day": "J",
-                      "start_time": "12:00",
-                      "end_time": "13:30",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
                       "extra_details": "Aula 104",
                       "classroom": "104"
                     }
