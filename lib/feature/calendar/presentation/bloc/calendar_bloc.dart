@@ -36,8 +36,9 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           set_subject_in_calendar.Params(
               calendarSubjectId: event.calendarSubject));
       result.fold(
-        (failure) => emit(const CalendarError('Error while setting subject')),
-        (_) => emit(CalendarSetSubjectInCalendarLoaded()),
+        (failure) => emit(const CalendarError('Error while loading data')),
+        (calendarSubject) => emit(CalendarSetSubjectInCalendarSuccess(
+            calendarSubject: calendarSubject)),
       );
     });
   }

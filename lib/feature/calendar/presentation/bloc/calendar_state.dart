@@ -31,4 +31,11 @@ final class CalendarGetAllCalendarInfoLoaded extends CalendarState {
 
 final class CalendarSetSubjectInCalendarLoading extends CalendarState {}
 
-final class CalendarSetSubjectInCalendarLoaded extends CalendarState {}
+final class CalendarSetSubjectInCalendarSuccess extends CalendarState {
+  final List<CalendarSubject> calendarSubject;
+
+  const CalendarSetSubjectInCalendarSuccess({required this.calendarSubject});
+
+  @override
+  List<Object> get props => [calendarSubject];
+}

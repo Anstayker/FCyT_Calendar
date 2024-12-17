@@ -9,7 +9,8 @@ import '../models/calendar_career_model.dart';
 
 abstract class CalendarLocalDatasource {
   Future<List<CalendarCareer>> getAllCalendarInfo();
-  Future<void> setSubjectInCalendar(CalendarSubject calendarSubject);
+  Future<List<CalendarSubject>> setSubjectInCalendar(
+      CalendarSubject calendarSubject);
 }
 
 class CalendarLocalDatasourceImpl implements CalendarLocalDatasource {
@@ -28,16 +29,17 @@ class CalendarLocalDatasourceImpl implements CalendarLocalDatasource {
   }
 
   @override
-  Future<void> setSubjectInCalendar(CalendarSubject calendarSubject) {
+  Future<List<CalendarSubject>> setSubjectInCalendar(
+      CalendarSubject calendarSubject) async {
     try {
       if (_cache.contains(calendarSubject)) {
         _cache.remove(calendarSubject);
       } else {
         _cache.add(calendarSubject);
       }
+      return _cache.toList();
     } catch (e) {
       throw CacheFailure();
     }
-    return Future.value();
   }
 }

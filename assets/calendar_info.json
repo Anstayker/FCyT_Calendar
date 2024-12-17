@@ -12,16 +12,16 @@
               "teacher": "Dr. Juan Pérez",
               "class_hours": [
                 {
-                  "day": "Lunes",
-                  "start_time": "08:00",
-                  "end_time": "09:30",
+                  "day": "L",
+                  "start_time": "8:15",
+                  "end_time": "9:45",
                   "extra_details": "Aula 101",
                   "classroom": "101"
                 },
                 {
-                  "day": "Miércoles",
-                  "start_time": "08:00",
-                  "end_time": "09:30",
+                  "day": "M",
+                  "start_time": "8:15",
+                  "end_time": "9:45",
                   "extra_details": "Aula 101",
                   "classroom": "101"
                 }
@@ -33,16 +33,16 @@
               "teacher": "Ing. María López",
               "class_hours": [
                 {
-                  "day": "Martes",
-                  "start_time": "10:00",
-                  "end_time": "11:30",
+                  "day": "L",
+                  "start_time": "11:15",
+                  "end_time": "12:45",
                   "extra_details": "Aula 102",
                   "classroom": "102"
                 },
                 {
-                  "day": "Jueves",
-                  "start_time": "10:00",
-                  "end_time": "11:30",
+                  "day": "J",
+                  "start_time": "11:15",
+                  "end_time": "12:45",
                   "extra_details": "Aula 102",
                   "classroom": "102"
                 }

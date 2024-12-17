@@ -6,13 +6,13 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../repositories/calendar_repository.dart';
 
-class SetSubjectInCalendar implements UseCase<void, Params> {
+class SetSubjectInCalendar implements UseCase<List<CalendarSubject>, Params> {
   final CalendarRepository repository;
 
   SetSubjectInCalendar({required this.repository});
 
   @override
-  Future<Either<Failure, dynamic>> call(Params params) async {
+  Future<Either<Failure, List<CalendarSubject>>> call(Params params) async {
     return await repository.setSubjectInCalendar(params.calendarSubjectId);
   }
 }

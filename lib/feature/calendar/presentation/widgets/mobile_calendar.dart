@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
-class MobileCalendar extends StatelessWidget {
+import '../../domain/entities/calendar_subject.dart';
+
+class MobileCalendar extends StatefulWidget {
   const MobileCalendar({
     super.key,
+    required this.subjectsData,
   });
 
+  @override
+  State<MobileCalendar> createState() => _MobileCalendarState();
+
+  final List<CalendarSubject> subjectsData;
+}
+
+class _MobileCalendarState extends State<MobileCalendar> {
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
@@ -25,9 +35,6 @@ class MobileCalendar extends StatelessWidget {
 
     final List<String> days = ['L', 'M', 'M', 'J', 'V', 'S'];
 
-    // ignore: unused_local_variable
-    final List<ClassSchedule> classScheduleList = [];
-
     return Column(
       children: [
         daysRow(days),
@@ -42,7 +49,7 @@ class MobileCalendar extends StatelessWidget {
                     ...hours.map((hour) => hoursDisplay(hour)),
                   ],
                 ),
-                classScheduleTable(scrollController, hours, days, context)
+                classScheduleTable(days, hours)
               ],
             ),
           ),
@@ -60,35 +67,48 @@ class MobileCalendar extends StatelessWidget {
     );
   }
 
-  Expanded classScheduleTable(ScrollController scrollController,
-      List<String> hours, List<String> days, BuildContext context) {
-    return Expanded(
-        child: SingleChildScrollView(
-      controller: scrollController,
-      scrollDirection: Axis.horizontal,
-      child: Column(
-        children: [
-          for (int i = 0; i < hours.length; i++)
-            Row(
-              children: List.generate(days.length, (index) {
-                // ignore: unused_local_variable
-                final day = days[index];
-                // ignore: unused_local_variable
-                final hour = hours[i];
-                // TODO: add class schedule
+  Widget classScheduleTable(List<String> days, List<String> hours) {
+    return Column(
+      children: hours.asMap().entries.map((entry) {
+        String hour = entry.value;
+        return Row(
+          children: days.asMap().entries.map((dayEntry) {
+            String day = dayEntry.value;
+            final selectedClass = widget.subjectsData.firstWhere(
+              (element) => element.hours.any(
+                (schedule) {
+                  print(
+                      'Comparing schedule.day: ${schedule.day} with day: $day');
+                  print(
+                      'Comparing schedule.startTime: ${schedule.startTime} with hour: $hour');
+                  return schedule.day == day && schedule.startTime == hour;
+                },
+              ),
+              orElse: () => const CalendarSubject(
+                id: '',
+                name: '',
+                teacher: '',
+                hours: [],
+              ),
+            );
 
-                return Container(
-                  height: 45,
-                  width: MediaQuery.of(context).size.width / 6 - 10,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey[350]!),
-                  ),
-                );
-              }),
-            )
-        ],
-      ),
-    ));
+            return Container(
+              height: 45,
+              width: MediaQuery.of(context).size.width / 6 - 10,
+              decoration: BoxDecoration(
+                color: selectedClass.name.isNotEmpty
+                    ? Colors.blue.withOpacity(0.5)
+                    : null,
+                border: Border.all(color: Colors.grey[350]!),
+              ),
+              child: selectedClass.name.isNotEmpty
+                  ? Center(child: Text(selectedClass.name))
+                  : null,
+            );
+          }).toList(),
+        );
+      }).toList(),
+    );
   }
 
   Row daysRow(List<String> days) {
@@ -110,18 +130,4 @@ class MobileCalendar extends StatelessWidget {
       ],
     );
   }
-}
-
-class ClassSchedule {
-  final String day;
-  final String startTime;
-  final String endTime;
-  final String title;
-
-  ClassSchedule({
-    required this.day,
-    required this.startTime,
-    required this.endTime,
-    required this.title,
-  });
 }

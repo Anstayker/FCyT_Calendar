@@ -37,8 +37,9 @@ class _CalendarPageState extends State<CalendarPage> {
               careersInfo = state.calendarCareerList;
               return layoutBuilder(context, careersInfo, subjectsData);
             }
-            if (state is CalendarSetSubjectInCalendar) {
-              print('object');
+            if (state is CalendarSetSubjectInCalendarSuccess) {
+              subjectsData = state.calendarSubject;
+              return layoutBuilder(context, careersInfo, subjectsData);
             }
 
             return layoutBuilder(context, careersInfo, subjectsData);
@@ -63,7 +64,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   width: 250,
                   child: calendarDrawer(careersList, context),
                 ),
-                Expanded(child: buildBody()),
+                Expanded(child: buildBody(subjectsData)),
                 SizedBox(
                   width: 50,
                   child: Column(
@@ -83,7 +84,7 @@ class _CalendarPageState extends State<CalendarPage> {
           // ! Mobile Version
           return Scaffold(
             appBar: calendarAppBar(),
-            body: buildBody(),
+            body: buildBody(subjectsData),
             drawer: calendarDrawer(careersList, context),
             floatingActionButton: mobileMainFab(),
           );
@@ -134,8 +135,8 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 
-  Widget buildBody() {
-    return const MobileCalendar();
+  Widget buildBody(List<CalendarSubject> subjectsData) {
+    return MobileCalendar(subjectsData: subjectsData);
   }
 
   FloatingActionButton mobileMainFab() {

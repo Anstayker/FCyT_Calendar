@@ -28,7 +28,7 @@ class CalendarRepositoryImpl implements CalendarRepository {
     try {
       final result =
           await calendarLocalDatasource.setSubjectInCalendar(calendarSubjectId);
-      return const Right(result);
+      return Right(result);
     } on CacheFailure {
       return Left(CacheFailure());
     }
