@@ -19,6 +19,16 @@ class MobileCalendar extends StatefulWidget {
 class _MobileCalendarState extends State<MobileCalendar> {
   final verticalSize = 100.0;
 
+  // Mapa de materias a colores
+  static const Map<String, Color> subjectColors = {
+    'Inglés I': Colors.red,
+    'Física General': Colors.green,
+    'Álgebra I': Colors.orange,
+    'Cálculo I': Colors.purple,
+    'Introducción A La Programación': Colors.blue,
+    // Agrega más materias y colores según sea necesario
+  };
+
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
@@ -125,7 +135,8 @@ class _MobileCalendarState extends State<MobileCalendar> {
                   : MediaQuery.of(context).size.width / days.length - 10,
               decoration: BoxDecoration(
                 color: selectedGroup.name.isNotEmpty
-                    ? Colors.blue.withOpacity(0.5)
+                    ? (subjectColors[selectedGroup.subjectName] ?? Colors.grey)
+                        .withOpacity(0.5)
                     : null,
                 border: Border.all(color: Colors.grey[350]!),
               ),
