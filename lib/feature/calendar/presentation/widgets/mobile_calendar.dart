@@ -90,7 +90,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
 
   Container hoursDisplay(String hour) {
     return Container(
-      height: verticalSize,
+      height: widget.isHorizontal ? verticalSize : verticalSize + 30,
       width: 60,
       alignment: Alignment.center,
       child: Text(hour),
