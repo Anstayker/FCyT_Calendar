@@ -22,7 +22,7 @@ class WebSideBar extends StatelessWidget {
             showDialogHelper(context, const DialogSave());
           }),
           sideBarButton('Mapa', Icons.map_outlined, () {
-            showDialogHelper(context, const DialogMap());
+            showDialogHelper(context, const DialogMap(isWeb: true));
           }),
           sideBarButton('Sugerir Horario', Icons.lightbulb_outline, () {
             showDialogHelper(context, const DialogInProgress());

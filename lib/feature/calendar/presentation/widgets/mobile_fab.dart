@@ -24,7 +24,7 @@ class MobileFab extends StatelessWidget {
           additionalFab(Icons.save_outlined, 150, 'Guardar', context,
               onMainFabPressed, const DialogSave()),
           additionalFab(Icons.map_outlined, 220, 'Mapa', context,
-              onMainFabPressed, const DialogMap()),
+              onMainFabPressed, const DialogMap(isWeb: false)),
           additionalFab(Icons.lightbulb_outline, 290, 'Sugerir horario',
               context, onMainFabPressed, const DialogInProgress()),
           additionalFab(Icons.color_lens_outlined, 360, 'Cambiar colores',
