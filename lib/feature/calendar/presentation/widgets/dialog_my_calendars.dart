@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DialogInProgress extends StatelessWidget {
-  const DialogInProgress({super.key});
+class DialogMyCalendars extends StatelessWidget {
+  const DialogMyCalendars({super.key});
 
   @override
   Widget build(BuildContext context) {

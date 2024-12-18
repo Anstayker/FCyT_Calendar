@@ -188,8 +188,19 @@ class _CalendarPageState extends State<CalendarPage> {
         ],
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.calendar_month)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.help_outline)),
+        IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => const DialogMyCalendars());
+            },
+            icon: const Icon(Icons.calendar_month)),
+        IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context, builder: (context) => const DialogHelp());
+            },
+            icon: const Icon(Icons.help_outline)),
       ],
     );
   }
@@ -205,14 +216,21 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
       actions: [
         TextButton.icon(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) => const DialogMyCalendars());
+          },
           icon: const Icon(Icons.calendar_month, color: Colors.black),
           label:
               const Text('Mis Horarios', style: TextStyle(color: Colors.black)),
         ),
         const SizedBox(width: 20),
         TextButton.icon(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context, builder: (context) => const DialogHelp());
+          },
           icon: const Icon(Icons.help_outline, color: Colors.black),
           label: const Text('Ayuda', style: TextStyle(color: Colors.black)),
         ),

@@ -11,3 +11,5 @@ export 'web_calendar.dart';
 export 'dialog_map.dart';
 export 'dialog_print.dart';
 export 'dialog_in_progress.dart';
+export 'dialog_help.dart';
+export 'dialog_my_calendars.dart';
