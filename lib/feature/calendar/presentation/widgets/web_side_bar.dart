@@ -21,7 +21,9 @@ class WebSideBar extends StatelessWidget {
           sideBarButton('Guardar', Icons.save_outlined, () {
             showDialogHelper(context, const DialogSave());
           }),
-          sideBarButton('Mapa', Icons.map_outlined, () {}),
+          sideBarButton('Mapa', Icons.map_outlined, () {
+            showDialogHelper(context, const DialogMap());
+          }),
           sideBarButton('Sugerir Horario', Icons.lightbulb_outline, () {
             showDialogHelper(context, const DialogInProgress());
           }),
