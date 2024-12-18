@@ -1,4 +1,3 @@
-import 'package:cappuchino_prototype/feature/calendar/domain/entities/calendar_subject_group.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +6,7 @@ import '../../../../injection_container.dart';
 import '../../domain/entities/calendar_career.dart';
 import '../../domain/entities/calendar_semester.dart';
 import '../../domain/entities/calendar_subject.dart';
+import '../../domain/entities/calendar_subject_group.dart';
 import '../bloc/calendar_bloc.dart';
 import '../widgets/widgets_export_calendar.dart';
 
@@ -59,7 +59,7 @@ class _CalendarPageState extends State<CalendarPage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         // TODO: Revisar el maxWidth
-        if (constraints.maxWidth > 800) {
+        if (constraints.maxWidth > 950) {
           isHorizontal = true;
           // ! Web Version
           return Scaffold(
@@ -172,7 +172,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget buildBody(List<CalendarSubjectGroup> subjectsData) {
     return Stack(
       children: [
-        MobileCalendar(subjectsData: subjectsData),
+        MobileCalendar(subjectsData: subjectsData, isHorizontal: isHorizontal),
         if (showAdditionalFabs) semiTransparentContainer(),
       ],
     );

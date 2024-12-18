@@ -22,8 +22,8 @@ class CalendarSubjectModel extends CalendarSubject {
     return CalendarSubjectModel(
       id: json['id'],
       name: json['name'],
-      groups: List<CalendarSubjectGroupModel>.from(
-          json['groups'].map((x) => CalendarSubjectGroupModel.fromJson(x))),
+      groups: List<CalendarSubjectGroupModel>.from(json['groups']
+          .map((x) => CalendarSubjectGroupModel.fromJson(x, json['name']))),
     );
   }
 

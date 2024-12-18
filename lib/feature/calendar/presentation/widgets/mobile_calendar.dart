@@ -6,12 +6,14 @@ class MobileCalendar extends StatefulWidget {
   const MobileCalendar({
     super.key,
     required this.subjectsData,
+    required this.isHorizontal,
   });
 
   @override
   State<MobileCalendar> createState() => _MobileCalendarState();
 
   final List<CalendarSubjectGroup> subjectsData;
+  final bool isHorizontal;
 }
 
 class _MobileCalendarState extends State<MobileCalendar> {
@@ -34,23 +36,40 @@ class _MobileCalendarState extends State<MobileCalendar> {
     ];
 
     final List<String> days = ['L', 'M', 'X', 'J', 'V', 'S'];
+    final List<String> daysFull = [
+      'Lunes',
+      'Martes',
+      'Miércoles',
+      'Jueves',
+      'Viernes',
+      'Sábado'
+    ];
 
     return Column(
       children: [
-        daysRow(days),
+        daysRow(widget.isHorizontal ? daysFull : days),
         Expanded(
           child: SingleChildScrollView(
             controller: scrollController,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
+            scrollDirection: Axis.horizontal,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minWidth: MediaQuery.of(context).size.width - 250,
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ...hours.map((hour) => hoursDisplay(hour)),
+                    Column(
+                      children: [
+                        ...hours.map((hour) => hoursDisplay(hour)),
+                      ],
+                    ),
+                    classScheduleTable(days, hours),
                   ],
                 ),
-                classScheduleTable(days, hours)
-              ],
+              ),
             ),
           ),
         ),
@@ -60,7 +79,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
 
   Container hoursDisplay(String hour) {
     return Container(
-      height: 45,
+      height: 60,
       width: 60,
       alignment: Alignment.center,
       child: Text(hour),
@@ -69,11 +88,9 @@ class _MobileCalendarState extends State<MobileCalendar> {
 
   Widget classScheduleTable(List<String> days, List<String> hours) {
     return Column(
-      children: hours.asMap().entries.map((entry) {
-        String hour = entry.value;
+      children: hours.map((hour) {
         return Row(
-          children: days.asMap().entries.map((dayEntry) {
-            String day = dayEntry.value;
+          children: days.map((day) {
             final selectedGroup = widget.subjectsData.firstWhere(
               (element) => element.hours.any(
                 (schedule) {
@@ -84,13 +101,16 @@ class _MobileCalendarState extends State<MobileCalendar> {
                 id: '',
                 name: '',
                 teacher: '',
+                subjectName: '',
                 hours: [],
               ),
             );
 
             return Container(
               height: 60,
-              width: MediaQuery.of(context).size.width / 6 - 10,
+              width: widget.isHorizontal
+                  ? (MediaQuery.of(context).size.width - (370)) / days.length
+                  : MediaQuery.of(context).size.width / days.length - 10,
               decoration: BoxDecoration(
                 color: selectedGroup.name.isNotEmpty
                     ? Colors.blue.withOpacity(0.5)
