@@ -46,14 +46,12 @@ class _WebCalendarState extends State<WebCalendar> {
                     color: Colors.grey,
                     child: const Center(child: Text('Hora')),
                   ),
-                  ...days
-                      .map((day) => Container(
-                            width: 100,
-                            height: 60,
-                            color: Colors.grey,
-                            child: Center(child: Text(day)),
-                          ))
-                      .toList(),
+                  ...days.map((day) => Container(
+                        width: 100,
+                        height: 60,
+                        color: Colors.grey,
+                        child: Center(child: Text(day)),
+                      )),
                 ],
               ),
               Column(
@@ -71,7 +69,7 @@ class _WebCalendarState extends State<WebCalendar> {
                           (group) => group.hours.any((schedule) =>
                               schedule.day == day &&
                               schedule.startTime == hour),
-                          orElse: () => CalendarSubjectGroup(
+                          orElse: () => const CalendarSubjectGroup(
                             id: '',
                             name: '',
                             teacher: '',
@@ -90,7 +88,7 @@ class _WebCalendarState extends State<WebCalendar> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(subjectGroup.subjectName,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold)),
                                     Text(subjectGroup.name),
                                     Text(subjectGroup.teacher),
@@ -98,7 +96,7 @@ class _WebCalendarState extends State<WebCalendar> {
                                 )
                               : null,
                         );
-                      }).toList(),
+                      }),
                     ],
                   );
                 }).toList(),

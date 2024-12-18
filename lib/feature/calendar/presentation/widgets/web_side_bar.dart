@@ -15,29 +15,28 @@ class WebSideBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           sideBarButton('Imprimir', Icons.print_outlined, () {
-            showDialogHelper(context);
+            showDialogHelper(context, const DialogPrint());
           }),
           sideBarButton('Guardar', Icons.save_outlined, () {
-            showDialogHelper(context);
+            showDialogHelper(context, const DialogSave());
           }),
           sideBarButton('Mapa', Icons.map_outlined, () {}),
           sideBarButton('Sugerir Horario', Icons.lightbulb_outline, () {
-            showDialogHelper(context);
+            showDialogHelper(context, const DialogInProgress());
           }),
           sideBarButton('Cambiar Colores', Icons.color_lens_outlined, () {
-            showDialogHelper(context);
+            showDialogHelper(context, const DialogInProgress());
           }),
           sideBarButton('Información', Icons.info_outline, () {
-            showDialogHelper(context);
+            showDialogHelper(context, const DialogInProgress());
           }),
         ],
       ),
     );
   }
 
-  Future<dynamic> showDialogHelper(BuildContext context) {
-    return showDialog(
-        context: context, builder: (context) => const DialogSave());
+  Future<dynamic> showDialogHelper(BuildContext context, Widget dialog) {
+    return showDialog(context: context, builder: (context) => dialog);
   }
 
   IconButton sideBarButton(

@@ -8,3 +8,6 @@ export 'mobile_fab.dart';
 export 'web_side_bar.dart';
 export 'dialog_save.dart';
 export 'web_calendar.dart';
+export 'dialog_map.dart';
+export 'dialog_print.dart';
+export 'dialog_in_progress.dart';

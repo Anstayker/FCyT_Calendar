@@ -19,6 +19,9 @@ dependencies:
   bloc: ^8.1.4
   # GetIt for dependency injection
   get_it: ^8.0.3
+  # Printing
+  printing: ^5.13.4
+  pdf: ^3.11.1
 
   flutter:
     sdk: flutter

@@ -18,18 +18,18 @@ class MobileFab extends StatelessWidget {
       alignment: Alignment.bottomRight,
       children: [
         if (showAdditionalFabs) ...[
-          additionalFab(
-              Icons.print_outlined, 80, 'Imprimir', context, onMainFabPressed),
-          additionalFab(
-              Icons.save_outlined, 150, 'Guardar', context, onMainFabPressed),
-          additionalFab(
-              Icons.map_outlined, 220, 'Mapa', context, onMainFabPressed),
+          additionalFab(Icons.print_outlined, 80, 'Imprimir', context,
+              onMainFabPressed, const DialogPrint()),
+          additionalFab(Icons.save_outlined, 150, 'Guardar', context,
+              onMainFabPressed, const DialogSave()),
+          additionalFab(Icons.map_outlined, 220, 'Mapa', context,
+              onMainFabPressed, const DialogMap()),
           additionalFab(Icons.lightbulb_outline, 290, 'Sugerir horario',
-              context, onMainFabPressed),
+              context, onMainFabPressed, const DialogInProgress()),
           additionalFab(Icons.color_lens_outlined, 360, 'Cambiar colores',
-              context, onMainFabPressed),
+              context, onMainFabPressed, const DialogInProgress()),
           additionalFab(Icons.info_outline, 430, 'Información', context,
-              onMainFabPressed),
+              onMainFabPressed, const DialogInProgress()),
         ],
         mainFab(),
       ],
@@ -37,7 +37,7 @@ class MobileFab extends StatelessWidget {
   }
 
   Widget additionalFab(IconData icon, double bottomPadding, String text,
-      BuildContext context, VoidCallback onPressed) {
+      BuildContext context, VoidCallback onPressed, Widget dialog) {
     return Padding(
       padding: EdgeInsets.only(bottom: bottomPadding, right: 4),
       child: Row(
@@ -53,8 +53,7 @@ class MobileFab extends StatelessWidget {
             mini: true,
             onPressed: () {
               onPressed();
-              showDialog(
-                  context: context, builder: (context) => const DialogSave());
+              showDialog(context: context, builder: (context) => dialog);
             },
             child: Icon(icon),
           ),

@@ -17,6 +17,11 @@ class DialogSave extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Horario guardado correctamente'),
+              ),
+            );
             Navigator.of(context).pop();
           },
           child: const Text('Guardar'),
