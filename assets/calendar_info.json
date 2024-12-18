@@ -551,31 +551,13 @@
       "semesters": [],
       "name": "Licenciatura en Energía"
     },
-    {
-      "id": "10",
-      "semesters": [],
-      "name": "Licenciatura en Física"
-    },
+
     {
       "id": "11",
       "semesters": [],
       "name": "Licenciatura en Física"
     },
-    {
-      "id": "12",
-      "semesters": [],
-      "name": "Licenciatura en Industrial"
-    },
-    {
-      "id": "13",
-      "semesters": [],
-      "name": "Licenciatura en Matemática"
-    },
-    {
-      "id": "14",
-      "semesters": [],
-      "name": "Licenciatura en Matemática"
-    },
+
     {
       "id": "15",
       "semesters": [],
@@ -586,11 +568,7 @@
       "semesters": [],
       "name": "Licenciatura en Mecánica"
     },
-    {
-      "id": "17",
-      "semesters": [],
-      "name": "Licenciatura en Química"
-    },
+
     {
       "id": "18",
       "semesters": [],

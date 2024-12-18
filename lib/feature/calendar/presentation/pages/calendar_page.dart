@@ -40,6 +40,7 @@ class _CalendarPageState extends State<CalendarPage> {
             }
             if (state is CalendarGetAllCalendarInfoLoaded) {
               careersInfo = state.calendarCareerList;
+              careersInfo.sort((a, b) => a.name.compareTo(b.name));
               return layoutBuilder(context, careersInfo, subjectsData);
             }
             if (state is CalendarSetSubjectInCalendarSuccess) {
