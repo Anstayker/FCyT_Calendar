@@ -24,9 +24,9 @@ class _MobileCalendarState extends State<MobileCalendar> {
     final ScrollController scrollController = ScrollController();
 
     final List<String> hours = [
-      '6:45',
-      '8:15',
-      '9:45',
+      '06:45',
+      '08:15',
+      '09:45',
       '11:15',
       '12:45',
       '14:15',
