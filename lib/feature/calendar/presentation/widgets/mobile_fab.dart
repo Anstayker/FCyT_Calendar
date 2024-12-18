@@ -1,3 +1,4 @@
+import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_info.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets_export_calendar.dart';
@@ -29,7 +30,7 @@ class MobileFab extends StatelessWidget {
           additionalFab(Icons.color_lens_outlined, 360, 'Cambiar colores',
               context, onMainFabPressed, const DialogInProgress()),
           additionalFab(Icons.info_outline, 430, 'Información', context,
-              onMainFabPressed, const DialogInProgress()),
+              onMainFabPressed, const DialogInfo()),
         ],
         mainFab(),
       ],

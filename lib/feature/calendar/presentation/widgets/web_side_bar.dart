@@ -1,3 +1,4 @@
+import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_info.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets_export_calendar.dart';
@@ -28,7 +29,7 @@ class WebSideBar extends StatelessWidget {
             showDialogHelper(context, const DialogInProgress());
           }),
           sideBarButton('Información', Icons.info_outline, () {
-            showDialogHelper(context, const DialogInProgress());
+            showDialogHelper(context, const DialogInfo());
           }),
         ],
       ),

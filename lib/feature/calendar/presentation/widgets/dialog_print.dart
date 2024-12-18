@@ -22,12 +22,6 @@ class DialogPrint extends StatelessWidget {
           onPressed: () async {
             await _printSchedule();
             // ignore: use_build_context_synchronously
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Horario impreso correctamente'),
-              ),
-            );
-            // ignore: use_build_context_synchronously
             Navigator.of(context).pop();
           },
           child: const Text('Imprimir'),
