@@ -13,7 +13,7 @@
                 {
                   "id": "1A",
                   "name": "Grupo A",
-                  "teacher": "Dr. Juan Pérez",
+                  "teacher": "Juan Pérez",
                   "hours": [
                     {
                       "day": "L",
@@ -26,8 +26,8 @@
                       "day": "M",
                       "start_time": "8:15",
                       "end_time": "9:45",
-                      "extra_details": "Aula 101",
-                      "classroom": "101"
+                      "extra_details": "Aula 102",
+                      "classroom": "102"
                     }
                   ]
                 },

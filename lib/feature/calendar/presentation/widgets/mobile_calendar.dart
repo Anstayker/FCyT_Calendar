@@ -1,5 +1,7 @@
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/entities/calendar_class_schedule.dart';
 import '../../domain/entities/calendar_subject_group.dart';
 
 class MobileCalendar extends StatefulWidget {
@@ -17,6 +19,8 @@ class MobileCalendar extends StatefulWidget {
 }
 
 class _MobileCalendarState extends State<MobileCalendar> {
+  final verticalSize = 80.0;
+
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
@@ -79,7 +83,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
 
   Container hoursDisplay(String hour) {
     return Container(
-      height: 60,
+      height: verticalSize,
       width: 60,
       alignment: Alignment.center,
       child: Text(hour),
@@ -106,8 +110,18 @@ class _MobileCalendarState extends State<MobileCalendar> {
               ),
             );
 
+            String classroomName = '';
+            if (selectedGroup.hours.isNotEmpty) {
+              classroomName = selectedGroup.hours
+                  .firstWhere(
+                    (element) =>
+                        element.day == day && element.startTime == hour,
+                  )
+                  .classroom;
+            }
+
             return Container(
-              height: 60,
+              height: verticalSize,
               width: widget.isHorizontal
                   ? (MediaQuery.of(context).size.width - (370)) / days.length
                   : MediaQuery.of(context).size.width / days.length - 10,
@@ -122,12 +136,16 @@ class _MobileCalendarState extends State<MobileCalendar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          selectedGroup.name,
+                          selectedGroup.subjectName,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          selectedGroup.id,
+                          selectedGroup.name,
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          'Aula: $classroomName',
                           textAlign: TextAlign.center,
                         ),
                       ],
