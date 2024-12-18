@@ -14,15 +14,26 @@ class SubjectGroupListTile extends StatelessWidget {
     required this.onTap,
   });
 
+  //? Modify also in mobile_calendar.dart
+  static const Map<String, Color> subjectColors = {
+    'Inglés I': Colors.red,
+    'Física General': Colors.green,
+    'Álgebra I': Colors.orange,
+    'Cálculo I': Colors.purple,
+    'Introducción A La Programación': Colors.blue,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: ListTile(
         title: Text(subjectGroup.teacher),
-        subtitle: Text(subjectGroup.name),
+        subtitle: Text('Grupo: ${subjectGroup.name}'),
         trailing: Checkbox(
           value: isSelected,
+          activeColor: (subjectColors[subjectGroup.subjectName] ?? Colors.grey)
+              .withOpacity(0.7),
           onChanged: (bool? value) {
             onTap();
           },

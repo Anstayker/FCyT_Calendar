@@ -19,14 +19,13 @@ class MobileCalendar extends StatefulWidget {
 class _MobileCalendarState extends State<MobileCalendar> {
   final verticalSize = 100.0;
 
-  // Mapa de materias a colores
+  //? Modify also in subject_group_list_tile.dart
   static const Map<String, Color> subjectColors = {
     'Inglés I': Colors.red,
     'Física General': Colors.green,
     'Álgebra I': Colors.orange,
     'Cálculo I': Colors.purple,
     'Introducción A La Programación': Colors.blue,
-    // Agrega más materias y colores según sea necesario
   };
 
   @override
