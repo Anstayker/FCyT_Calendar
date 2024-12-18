@@ -1,7 +1,5 @@
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/calendar_class_schedule.dart';
 import '../../domain/entities/calendar_subject_group.dart';
 
 class MobileCalendar extends StatefulWidget {
@@ -19,7 +17,7 @@ class MobileCalendar extends StatefulWidget {
 }
 
 class _MobileCalendarState extends State<MobileCalendar> {
-  final verticalSize = 80.0;
+  final verticalSize = 100.0;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +119,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
             }
 
             return Container(
-              height: verticalSize,
+              height: widget.isHorizontal ? verticalSize : verticalSize + 30,
               width: widget.isHorizontal
                   ? (MediaQuery.of(context).size.width - (370)) / days.length
                   : MediaQuery.of(context).size.width / days.length - 10,
@@ -139,6 +137,8 @@ class _MobileCalendarState extends State<MobileCalendar> {
                           selectedGroup.subjectName,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: widget.isHorizontal ? 2 : 3,
                         ),
                         Text(
                           selectedGroup.name,
