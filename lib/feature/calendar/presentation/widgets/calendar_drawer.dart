@@ -143,7 +143,9 @@ class _CalendarDrawerState extends State<CalendarDrawer> {
       title = 'Seleccionar Materias';
     }
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 16.0,
+      ),
       child: Row(
         children: [
           SizedBox(

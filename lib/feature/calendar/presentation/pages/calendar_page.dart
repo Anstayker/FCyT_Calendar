@@ -1,6 +1,8 @@
+import 'package:cappuchino_prototype/core/themes/theme_notifier.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../injection_container.dart';
 import '../../domain/entities/calendar_career.dart';
@@ -27,6 +29,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Set<CalendarSubjectGroup> selectedGroups = {};
   bool showAdditionalFabs = false;
   bool isHorizontal = false;
+  bool isNightModeEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -188,11 +191,17 @@ class _CalendarPageState extends State<CalendarPage> {
       title: const Row(
         children: [
           Icon(Icons.coffee),
-          SizedBox(width: 20),
-          Text('Cappuchino UMSS'),
+          SizedBox(width: 8),
+          Text('Cappuchino', style: TextStyle(fontWeight: FontWeight.bold)),
         ],
       ),
       actions: [
+        Switch(
+          value: Provider.of<ThemeNotifier>(context).isDarkMode,
+          onChanged: (value) {
+            Provider.of<ThemeNotifier>(context, listen: false).toggleTheme();
+          },
+        ),
         IconButton(
             onPressed: () {
               showDialog(
@@ -214,21 +223,35 @@ class _CalendarPageState extends State<CalendarPage> {
     return AppBar(
       title: const Row(
         children: [
-          Icon(Icons.coffee),
+          SizedBox(width: 10),
+          Icon(Icons.coffee, size: 28),
           SizedBox(width: 20),
-          Text('Cappuchino UMSS'),
+          Text('SCESI Cappuchino ',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
         ],
       ),
       actions: [
+        TextButton.icon(
+          onPressed: () {
+            isNightModeEnabled = !isNightModeEnabled;
+            Provider.of<ThemeNotifier>(context, listen: false).toggleTheme();
+          },
+          icon: Provider.of<ThemeNotifier>(context).isDarkMode
+              ? const Icon(Icons.nightlight_round)
+              : const Icon(Icons.wb_sunny),
+          label: Provider.of<ThemeNotifier>(context).isDarkMode
+              ? const Text('Modo noche')
+              : const Text('Modo día'),
+        ),
+        const SizedBox(width: 20),
         TextButton.icon(
           onPressed: () {
             showDialog(
                 context: context,
                 builder: (context) => const DialogMyCalendars());
           },
-          icon: const Icon(Icons.calendar_month, color: Colors.black),
-          label:
-              const Text('Mis Horarios', style: TextStyle(color: Colors.black)),
+          icon: const Icon(Icons.calendar_month),
+          label: const Text('Mis Horarios'),
         ),
         const SizedBox(width: 20),
         TextButton.icon(
@@ -236,8 +259,8 @@ class _CalendarPageState extends State<CalendarPage> {
             showDialog(
                 context: context, builder: (context) => const DialogHelp());
           },
-          icon: const Icon(Icons.help_outline, color: Colors.black),
-          label: const Text('Ayuda', style: TextStyle(color: Colors.black)),
+          icon: const Icon(Icons.help_outline),
+          label: const Text('Ayuda'),
         ),
       ],
     );
