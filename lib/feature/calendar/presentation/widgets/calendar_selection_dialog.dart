@@ -12,9 +12,9 @@ class CalendarSelectionDialog extends StatefulWidget {
 
 class _CalendarSelectionDialogState extends State<CalendarSelectionDialog> {
   final List<String> calendars = [
-    'Calendario 1',
-    'Calendario 2',
-    'Calendario 3',
+    'Horario 1',
+    'Horario 2',
+    'Horario 3',
     // Agrega más calendarios según sea necesario
   ];
 
@@ -40,10 +40,19 @@ class _CalendarSelectionDialogState extends State<CalendarSelectionDialog> {
                       return Card(
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         child: Center(
-                          child: Text(
-                            'Imagen de: ${calendars[index]}',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 24),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Imagen de:',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              Text(
+                                calendars[index],
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(fontSize: 24),
+                              ),
+                            ],
                           ),
                         ),
                       );

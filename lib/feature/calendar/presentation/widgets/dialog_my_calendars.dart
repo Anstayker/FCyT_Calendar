@@ -6,7 +6,7 @@ class DialogMyCalendars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Función no disponible'),
+      title: const Text('Mis calendarios'),
       content: const Text(
           'Disculpe las molestias, esta función aún no está disponible'),
       actions: [
