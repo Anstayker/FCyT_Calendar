@@ -1,0 +1,590 @@
+{
+  "careers": [
+    {
+      "id": "1",
+      "name": "Licenciatura en Ingeniería Informática",
+      "semesters": [
+        {
+          "name": "Primer Semestre",
+          "subjects": [
+            {
+              "id": "1",
+              "name": "Inglés I",
+              "groups": [
+                {
+                  "id": "1",
+                  "name": "1",
+                  "teacher": "Céspedes Guizada María Benita",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "08:15",
+                      "end_time": "09:45",
+                      "extra_details": "Aula 693B",
+                      "classroom": "693B"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "08:15",
+                      "end_time": "09:45",
+                      "extra_details": "Aula 691D",
+                      "classroom": "691D"
+                    }
+                  ]
+                },
+                {
+                  "id": "2",
+                  "name": "2",
+                  "teacher": "Céspedes Guizada María Benita",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 690D",
+                      "classroom": "690D"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 690D",
+                      "classroom": "690D"
+                    }
+                  ]
+                },
+                {
+                  "id": "3",
+                  "name": "3",
+                  "teacher": "Peeters Ilonaa Magda Lena",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "06:45",
+                      "end_time": "08:15",
+                      "extra_details": "Aula 691B",
+                      "classroom": "691B"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "06:45",
+                      "end_time": "08:15",
+                      "extra_details": "Aula 692H",
+                      "classroom": "692H"
+                    }
+                  ]
+                },
+                {
+                  "id": "4",
+                  "name": "4",
+                  "teacher": "Grilo Salvatierra María Estela",
+                  "hours": [
+                    {
+                      "day": "J",
+                      "start_time": "14:15",
+                      "end_time": "15:45",
+                      "extra_details": "Aula 692F",
+                      "classroom": "692F"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "06:45",
+                      "end_time": "08:15",
+                      "extra_details": "Aula 692H",
+                      "classroom": "692H"
+                    }
+                  ]
+                },
+                {
+                  "id": "5",
+                  "name": "5",
+                  "teacher": "Céspedes Guizada María Benita",
+                  "hours": [
+                    {
+                      "day": "J",
+                      "start_time": "15:45",
+                      "end_time": "17:15",
+                      "extra_details": "Aula 692F",
+                      "classroom": "692F"
+                    },
+                    {
+                      "day": "S",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 691B",
+                      "classroom": "691B"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Física General",
+              "groups": [
+                {
+                  "id": "B",
+                  "name": "1",
+                  "teacher": "Valenzuela Miranda Roberto",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 612",
+                      "classroom": "612"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "14:15",
+                      "end_time": "15:45",
+                      "extra_details": "Aula 692C",
+                      "classroom": "692C"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Álgebra I",
+              "groups": [
+                {
+                  "id": "10",
+                  "name": "10",
+                  "teacher": "Rodríguez Sejas Juan Antonio",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 692E",
+                      "classroom": "692E"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 692F",
+                      "classroom": "692F"
+                    }
+                  ]
+                },
+                {
+                  "id": "15",
+                  "name": "15",
+                  "teacher": "Carrasco Calvo Álvaro Hernando",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "14:15",
+                      "end_time": "15:45",
+                      "extra_details": "Aula 607",
+                      "classroom": "607"
+                    },
+                    {
+                      "day": "L",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 642",
+                      "classroom": "642"
+                    }
+                  ]
+                },
+                {
+                  "id": "8",
+                  "name": "8",
+                  "teacher": "León Romero Gualberto",
+                  "hours": [
+                    {
+                      "day": "J",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 625D",
+                      "classroom": "625D"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
+                      "extra_details": "Aula 607",
+                      "classroom": "607"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4",
+              "name": "Cálculo I",
+              "groups": [
+                {
+                  "id": "11",
+                  "name": "11",
+                  "teacher": "Rojas Zurita Ramiro",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "06:45",
+                      "end_time": "08:15",
+                      "extra_details": "Aula 622",
+                      "classroom": "622"
+                    },
+                    {
+                      "day": "M",
+                      "start_time": "08:15",
+                      "end_time": "09:45",
+                      "extra_details": "Aula 690B",
+                      "classroom": "690B"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "08:15",
+                      "end_time": "09:45",
+                      "extra_details": "Aula 692E",
+                      "classroom": "692E"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5",
+              "name": "Introducción a la Programación",
+              "groups": [
+                {
+                  "id": "1",
+                  "name": "1",
+                  "teacher": "Salazar Serrudo Carla",
+                  "hours": [
+                    {
+                      "day": "J",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 691A",
+                      "classroom": "691A"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "11:15",
+                      "end_time": "12:45",
+                      "extra_details": "Aula 691E",
+                      "classroom": "691E"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 623",
+                      "classroom": "623"
+                    }
+                  ]
+                },
+                {
+                  "id": "10",
+                  "name": "10",
+                  "teacher": "Costas Jauregui Vladimir Abel",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 693D",
+                      "classroom": "693D"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 691A",
+                      "classroom": "691A"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "14:15",
+                      "end_time": "15:45",
+                      "extra_details": "Aula 691B",
+                      "classroom": "691B"
+                    }
+                  ]
+                },
+                {
+                  "id": "2",
+                  "name": "2",
+                  "teacher": "Blanco Coca Leticia",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 617",
+                      "classroom": "617"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 691B",
+                      "classroom": "691B"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "15:45",
+                      "end_time": "17:15",
+                      "extra_details": "Aula 624",
+                      "classroom": "624"
+                    }
+                  ]
+                },
+                {
+                  "id": "3",
+                  "name": "3",
+                  "teacher": "Ustariz Vargas Hernan",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
+                      "extra_details": "Aula 607",
+                      "classroom": "607"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
+                      "extra_details": "Aula 612",
+                      "classroom": "612"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
+                      "extra_details": "Aula 624",
+                      "classroom": "624"
+                    }
+                  ]
+                },
+                {
+                  "id": "4",
+                  "name": "4",
+                  "teacher": "Villarroel Tapia Henry Frank",
+                  "hours": [
+                    {
+                      "day": "L",
+                      "start_time": "15:45",
+                      "end_time": "17:15",
+                      "extra_details": "Aula 623",
+                      "classroom": "623"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "15:45",
+                      "end_time": "17:15",
+                      "extra_details": "Aula 693C",
+                      "classroom": "693C"
+                    },
+                    {
+                      "day": "V",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 691E",
+                      "classroom": "691E"
+                    }
+                  ]
+                },
+                {
+                  "id": "5",
+                  "name": "5",
+                  "teacher": "Montano Quiroga Victor Hugo",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 690B",
+                      "classroom": "690B"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 623",
+                      "classroom": "623"
+                    },
+                    {
+                      "day": "S",
+                      "start_time": "09:45",
+                      "end_time": "11:15",
+                      "extra_details": "Aula 691C",
+                      "classroom": "691C"
+                    }
+                  ]
+                },
+                {
+                  "id": "6",
+                  "name": "6",
+                  "teacher": "Salazar Serrudo Carla",
+                  "hours": [
+                    {
+                      "day": "X",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 692D",
+                      "classroom": "692D"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 691D",
+                      "classroom": "691D"
+                    },
+                    {
+                      "day": "S",
+                      "start_time": "08:15",
+                      "end_time": "09:45",
+                      "extra_details": "Aula 661",
+                      "classroom": "661"
+                    }
+                  ]
+                },
+                {
+                  "id": "7",
+                  "name": "7",
+                  "teacher": "Antezana Serrano Dilan Alejandro",
+                  "hours": [
+                    {
+                      "day": "M",
+                      "start_time": "12:45",
+                      "end_time": "14:15",
+                      "extra_details": "Aula 690C",
+                      "classroom": "690C"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "15:45",
+                      "end_time": "17:15",
+                      "extra_details": "Aula 692E",
+                      "classroom": "692E"
+                    },
+                    {
+                      "day": "J",
+                      "start_time": "17:15",
+                      "end_time": "18:45",
+                      "extra_details": "Aula 693B",
+                      "classroom": "693B"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Segundo Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Tercer Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Cuarto Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Quinto Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Sexto Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Séptimo Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Octavo Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Noveno Semestre",
+          "subjects": []
+        },
+        {
+          "name": "Materias Electivas",
+          "subjects": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "semesters": [],
+      "name": "Licenciatura en Alimentos"
+    },
+    {
+      "id": "3",
+      "semesters": [],
+      "name": "Licenciatura en Biología"
+    },
+    {
+      "id": "4",
+      "semesters": [],
+      "name": "Licenciatura en Biotecnología"
+    },
+    {
+      "id": "5",
+      "semesters": [],
+      "name": "Licenciatura en Civil"
+    },
+    {
+      "id": "6",
+      "semesters": [],
+      "name": "Licenciatura en Eléctrica"
+    },
+    {
+      "id": "7",
+      "semesters": [],
+      "name": "Licenciatura en Electromecánica"
+    },
+    {
+      "id": "8",
+      "semesters": [],
+      "name": "Licenciatura en Electrónica"
+    },
+    {
+      "id": "9",
+      "semesters": [],
+      "name": "Licenciatura en Energía"
+    },
+
+    {
+      "id": "11",
+      "semesters": [],
+      "name": "Licenciatura en Física"
+    },
+
+    {
+      "id": "15",
+      "semesters": [],
+      "name": "Licenciatura en Matemática"
+    },
+    {
+      "id": "16",
+      "semesters": [],
+      "name": "Licenciatura en Mecánica"
+    },
+
+    {
+      "id": "18",
+      "semesters": [],
+      "name": "Licenciatura en Química"
+    },
+    {
+      "id": "19",
+      "semesters": [],
+      "name": "Licenciatura en Sistemas"
+    }
+  ]
+}

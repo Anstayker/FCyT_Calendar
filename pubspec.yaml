@@ -7,8 +7,31 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  # Provider for state management
   provider: ^6.1.2
   go_router: ^14.6.2
+  # Functional programming
+  dartz: ^0.10.1
+  # Equatable for value equality
+  equatable: ^2.0.7
+  # Bloc for state management
+  flutter_bloc: ^8.1.6
+  bloc: ^8.1.4
+  # GetIt for dependency injection
+  get_it: ^8.0.3
+  # Printing
+  printing: ^5.13.4
+  pdf: ^3.11.1
+  # Internationalization formatting
+  intl: ^0.20.1
+  # URL navigation
+  url_launcher: ^6.3.1
+  # Image viewer
+  photo_view: ^0.15.0
+  # Multi select dropdown
+  multi_dropdown: ^3.0.1
+  # Carousel slider
+  carousel_slider: ^5.0.0
 
   flutter:
     sdk: flutter
@@ -20,3 +43,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
