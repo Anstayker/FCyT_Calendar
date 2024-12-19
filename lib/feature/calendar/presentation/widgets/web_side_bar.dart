@@ -1,3 +1,4 @@
+import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_calendar_generator.dart';
 import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_info.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class WebSideBar extends StatelessWidget {
             showDialogHelper(context, const DialogMap(isWeb: true));
           }),
           sideBarButton('Sugerir Horario', Icons.lightbulb_outline, () {
-            showDialogHelper(context, const DialogInProgress());
+            showDialogHelper(context, const DialogCalendarGenerator());
           }),
           sideBarButton('Cambiar Colores', Icons.color_lens_outlined, () {
             showDialogHelper(context, const DialogInProgress());

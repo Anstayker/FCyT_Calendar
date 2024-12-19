@@ -1,3 +1,4 @@
+import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_calendar_generator.dart';
 import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_info.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class MobileFab extends StatelessWidget {
           additionalFab(Icons.map_outlined, 220, 'Mapa', context,
               onMainFabPressed, const DialogMap(isWeb: false)),
           additionalFab(Icons.lightbulb_outline, 290, 'Sugerir horario',
-              context, onMainFabPressed, const DialogInProgress()),
+              context, onMainFabPressed, const DialogCalendarGenerator()),
           additionalFab(Icons.color_lens_outlined, 360, 'Cambiar colores',
               context, onMainFabPressed, const DialogInProgress()),
           additionalFab(Icons.info_outline, 430, 'Información', context,

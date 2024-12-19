@@ -28,6 +28,10 @@ dependencies:
   url_launcher: ^6.3.1
   # Image viewer
   photo_view: ^0.15.0
+  # Multi select dropdown
+  multi_dropdown: ^3.0.1
+  # Carousel slider
+  carousel_slider: ^5.0.0
 
   flutter:
     sdk: flutter
