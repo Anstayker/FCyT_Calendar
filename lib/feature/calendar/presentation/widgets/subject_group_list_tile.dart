@@ -20,7 +20,7 @@ class SubjectGroupListTile extends StatelessWidget {
     'Física General': Colors.green,
     'Álgebra I': Colors.orange,
     'Cálculo I': Colors.purple,
-    'Introducción A La Programación': Colors.blue,
+    'Introducción a la Programación': Colors.blue,
   };
 
   @override

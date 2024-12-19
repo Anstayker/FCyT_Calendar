@@ -25,7 +25,7 @@ class _MobileCalendarState extends State<MobileCalendar> {
     'Física General': Colors.green,
     'Álgebra I': Colors.orange,
     'Cálculo I': Colors.purple,
-    'Introducción A La Programación': Colors.blue,
+    'Introducción a la Programación': Colors.blue,
   };
 
   @override
@@ -192,6 +192,12 @@ class _MobileCalendarState extends State<MobileCalendar> {
   }
 
   Widget conflictCell(List<CalendarSubjectGroup> subjects) {
+    double conflictHeightFactor = 30.0;
+    // ignore: unused_local_variable
+    double cellHeight = widget.isHorizontal
+        ? verticalSize
+        : verticalSize + conflictHeightFactor * subjects.length;
+
     return Container(
       height: widget.isHorizontal ? verticalSize : verticalSize + 30,
       width: widget.isHorizontal
@@ -203,17 +209,26 @@ class _MobileCalendarState extends State<MobileCalendar> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: subjects.map((subject) {
+          String classroomName = subject.hours
+              .firstWhere(
+                (element) =>
+                    element.day == subject.hours.first.day &&
+                    element.startTime == subject.hours.first.startTime,
+              )
+              .classroom;
           return Column(
             children: [
               Text(
                 subject.subjectName,
                 textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
                 widget.isHorizontal
                     ? 'Grupo: ${subject.name}'
-                    : 'G:${subject.name}',
+                    : 'G:${subject.name} - $classroomName',
                 textAlign: TextAlign.center,
               ),
             ],
