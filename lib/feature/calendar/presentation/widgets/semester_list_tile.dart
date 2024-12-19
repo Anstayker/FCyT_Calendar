@@ -15,7 +15,8 @@ class SemesterListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(semester.name),
+      title: Text(semester.name,
+          style: const TextStyle(fontWeight: FontWeight.bold)),
       onTap: onTap,
     );
   }

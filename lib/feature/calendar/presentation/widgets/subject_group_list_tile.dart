@@ -26,7 +26,7 @@ class SubjectGroupListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0),
+      padding: const EdgeInsets.only(left: 32.0),
       child: ListTile(
         title: Text(subjectGroup.teacher),
         subtitle: Text('Grupo: ${subjectGroup.name}'),

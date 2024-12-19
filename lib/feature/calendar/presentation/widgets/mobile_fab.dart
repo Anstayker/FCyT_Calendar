@@ -1,7 +1,6 @@
-import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_calendar_generator.dart';
-import 'package:cappuchino_prototype/feature/calendar/presentation/widgets/dialog_info.dart';
 import 'package:flutter/material.dart';
 
+import 'dialog_calendar_generator.dart';
 import 'widgets_export_calendar.dart';
 
 class MobileFab extends StatelessWidget {
@@ -29,7 +28,7 @@ class MobileFab extends StatelessWidget {
           additionalFab(Icons.lightbulb_outline, 290, 'Sugerir horario',
               context, onMainFabPressed, const DialogCalendarGenerator()),
           additionalFab(Icons.color_lens_outlined, 360, 'Cambiar colores',
-              context, onMainFabPressed, const DialogInProgress()),
+              context, onMainFabPressed, const StackColorChange()),
           additionalFab(Icons.info_outline, 430, 'Información', context,
               onMainFabPressed, const DialogInfo()),
         ],
@@ -40,26 +39,30 @@ class MobileFab extends StatelessWidget {
 
   Widget additionalFab(IconData icon, double bottomPadding, String text,
       BuildContext context, VoidCallback onPressed, Widget dialog) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: bottomPadding, right: 4),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            text,
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(width: 12),
-          FloatingActionButton(
-            mini: true,
-            onPressed: () {
-              onPressed();
-              showDialog(context: context, builder: (context) => dialog);
-            },
-            child: Icon(icon),
-          ),
-        ],
+    return AnimatedOpacity(
+      opacity: showAdditionalFabs ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 300),
+      child: Padding(
+        padding: EdgeInsets.only(bottom: bottomPadding, right: 4),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              text,
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(width: 12),
+            FloatingActionButton(
+              mini: true,
+              onPressed: () {
+                onPressed();
+                showDialog(context: context, builder: (context) => dialog);
+              },
+              child: Icon(icon),
+            ),
+          ],
+        ),
       ),
     );
   }

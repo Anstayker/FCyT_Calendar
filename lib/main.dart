@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/routes/app_routes.dart';
+import 'core/themes/default_theme.dart';
 import 'feature/calendar/presentation/pages/calendar_page.dart';
 import 'injection_container.dart' as dependencies;
 
@@ -15,11 +16,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRoutes.onGenerateRoutes,
-      //theme: defaultTheme(),
-      home: CalendarPage(),
+      theme: defaultTheme(),
+      home: const CalendarPage(),
       title: 'Cappuchino UMSS',
     );
   }
