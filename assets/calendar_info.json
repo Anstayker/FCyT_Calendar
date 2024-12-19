@@ -81,10 +81,17 @@
                   "hours": [
                     {
                       "day": "J",
-                      "start_time": "10:30",
-                      "end_time": "12:00",
+                      "start_time": "14:15",
+                      "end_time": "15:45",
                       "extra_details": "Aula 692F",
                       "classroom": "692F"
+                    },
+                    {
+                      "day": "X",
+                      "start_time": "06:45",
+                      "end_time": "08:15",
+                      "extra_details": "Aula 692H",
+                      "classroom": "692H"
                     }
                   ]
                 },
@@ -95,13 +102,13 @@
                   "hours": [
                     {
                       "day": "J",
-                      "start_time": "09:00",
-                      "end_time": "10:30",
+                      "start_time": "15:45",
+                      "end_time": "17:15",
                       "extra_details": "Aula 692F",
                       "classroom": "692F"
                     },
                     {
-                      "day": "V",
+                      "day": "S",
                       "start_time": "11:15",
                       "end_time": "12:45",
                       "extra_details": "Aula 691B",
