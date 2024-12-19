@@ -68,7 +68,7 @@ class DialogHelp extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            leading: Icon(icon, color: Colors.blue),
+            leading: Icon(icon, color: Colors.indigo),
             title: Text(
               title,
               style: const TextStyle(
