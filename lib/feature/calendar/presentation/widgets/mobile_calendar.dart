@@ -98,24 +98,36 @@ class _MobileCalendarState extends State<MobileCalendar> {
   }
 
   Widget classScheduleTable(List<String> days, List<String> hours) {
+    Map<String, List<CalendarSubjectGroup>> scheduleMap = {};
+
+    for (var subject in widget.subjectsData) {
+      for (var schedule in subject.hours) {
+        String key = '${schedule.day}-${schedule.startTime}';
+        if (scheduleMap.containsKey(key)) {
+          scheduleMap[key]!.add(subject);
+        } else {
+          scheduleMap[key] = [subject];
+        }
+      }
+    }
+
     return Column(
       children: hours.map((hour) {
         return Row(
           children: days.map((day) {
-            final selectedGroup = widget.subjectsData.firstWhere(
-              (element) => element.hours.any(
-                (schedule) {
-                  return schedule.day == day && schedule.startTime == hour;
-                },
-              ),
-              orElse: () => const CalendarSubjectGroup(
-                id: '',
-                name: '',
-                teacher: '',
-                subjectName: '',
-                hours: [],
-              ),
-            );
+            final key = '$day-$hour';
+            final subjects = scheduleMap[key] ?? [];
+            final hasConflict = subjects.length > 1;
+
+            final selectedGroup = subjects.isNotEmpty
+                ? subjects.first
+                : const CalendarSubjectGroup(
+                    id: '',
+                    name: '',
+                    teacher: '',
+                    subjectName: '',
+                    hours: [],
+                  );
 
             String classroomName = '';
             if (selectedGroup.hours.isNotEmpty) {
@@ -127,44 +139,87 @@ class _MobileCalendarState extends State<MobileCalendar> {
                   .classroom;
             }
 
-            return Container(
-              height: widget.isHorizontal ? verticalSize : verticalSize + 30,
-              width: widget.isHorizontal
-                  ? (MediaQuery.of(context).size.width - (370)) / days.length
-                  : MediaQuery.of(context).size.width / days.length - 10,
-              decoration: BoxDecoration(
-                color: selectedGroup.name.isNotEmpty
-                    ? (subjectColors[selectedGroup.subjectName] ?? Colors.grey)
-                        .withOpacity(0.5)
-                    : null,
-                border: Border.all(color: Colors.grey[350]!),
-              ),
-              child: selectedGroup.name.isNotEmpty
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          selectedGroup.subjectName,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: widget.isHorizontal ? 2 : 3,
-                        ),
-                        Text(
-                          selectedGroup.name,
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'Aula: $classroomName',
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    )
-                  : null,
-            );
+            if (hasConflict) {
+              return conflictCell(subjects);
+            } else {
+              return normalCell(days, selectedGroup, classroomName);
+            }
           }).toList(),
         );
       }).toList(),
+    );
+  }
+
+  Container normalCell(List<String> days, CalendarSubjectGroup selectedGroup,
+      String classroomName) {
+    return Container(
+      height: widget.isHorizontal ? verticalSize : verticalSize + 30,
+      width: widget.isHorizontal
+          ? (MediaQuery.of(context).size.width - (370)) / days.length
+          : MediaQuery.of(context).size.width / days.length - 10,
+      decoration: BoxDecoration(
+        color: selectedGroup.name.isNotEmpty
+            ? (subjectColors[selectedGroup.subjectName] ?? Colors.grey)
+                .withOpacity(0.5)
+            : null,
+        border: Border.all(color: Colors.grey[350]!),
+      ),
+      child: selectedGroup.name.isNotEmpty
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  selectedGroup.subjectName,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: widget.isHorizontal ? 2 : 3,
+                ),
+                Text(
+                  widget.isHorizontal
+                      ? 'Grupo: ${selectedGroup.name}'
+                      : 'G:${selectedGroup.name}',
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  widget.isHorizontal ? 'Aula: $classroomName' : classroomName,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            )
+          : null,
+    );
+  }
+
+  Widget conflictCell(List<CalendarSubjectGroup> subjects) {
+    return Container(
+      height: widget.isHorizontal ? verticalSize : verticalSize + 30,
+      width: widget.isHorizontal
+          ? (MediaQuery.of(context).size.width - (370)) / 6
+          : MediaQuery.of(context).size.width / 6 - 10,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.red, width: 2.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: subjects.map((subject) {
+          return Column(
+            children: [
+              Text(
+                subject.subjectName,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                widget.isHorizontal
+                    ? 'Grupo: ${subject.name}'
+                    : 'G:${subject.name}',
+                textAlign: TextAlign.center,
+              ),
+            ],
+          );
+        }).toList(),
+      ),
     );
   }
 
