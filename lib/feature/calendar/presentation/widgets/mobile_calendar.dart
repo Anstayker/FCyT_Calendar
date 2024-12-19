@@ -227,8 +227,10 @@ class _MobileCalendarState extends State<MobileCalendar> {
               ),
               Text(
                 widget.isHorizontal
-                    ? 'Grupo: ${subject.name}'
+                    ? 'Grupo: ${subject.name} - Aula: $classroomName'
                     : 'G:${subject.name} - $classroomName',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
               ),
             ],
