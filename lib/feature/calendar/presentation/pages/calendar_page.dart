@@ -104,10 +104,14 @@ class _CalendarPageState extends State<CalendarPage> {
           showAdditionalFabs = false;
         });
       },
-      child: Container(
-        color: Colors.black.withOpacity(0.5),
-        width: double.infinity,
-        height: double.infinity,
+      child: AnimatedOpacity(
+        opacity: showAdditionalFabs ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 500),
+        child: Container(
+          color: Colors.black.withOpacity(0.5),
+          width: double.infinity,
+          height: double.infinity,
+        ),
       ),
     );
   }

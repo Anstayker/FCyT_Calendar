@@ -10,6 +10,8 @@ class CalendarSelectionDialog extends StatefulWidget {
       _CalendarSelectionDialogState();
 }
 
+CarouselSliderController _carouselController = CarouselSliderController();
+
 class _CalendarSelectionDialogState extends State<CalendarSelectionDialog> {
   final List<String> calendars = [
     'Horario 1',
@@ -19,7 +21,6 @@ class _CalendarSelectionDialogState extends State<CalendarSelectionDialog> {
   ];
 
   int selectedIndex = 0;
-  CarouselSliderController _carouselController = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
